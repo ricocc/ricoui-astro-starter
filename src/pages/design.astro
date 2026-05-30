@@ -1,0 +1,190 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/elements/PageHeader.astro";
+import Button from "@/components/ui/Button.astro";
+import Badge from "@/components/ui/Badge.astro";
+import { ArrowRight, FileText, Palette, Route, Type } from "@lucide/astro";
+
+const sourceFiles = [
+	"src/styles/global.css",
+	"tailwind.config.mjs",
+	"src/layouts/Layout.astro",
+	"src/assets/js/main.js",
+	"docs/DESIGN.md",
+];
+
+const brandTokens = [
+	{ token: "--color-primary", value: "#2d6dc3", usage: "Brand color, links, CTAs, headings" },
+	{ token: "--color-primary-strong", value: "#0066ff", usage: "Hover and emphasis" },
+	{ token: "--color-primary-light", value: "#8fb9ff", usage: "Light accents" },
+	{ token: "--color-accent", value: "#fad13b", usage: "Badges and highlights" },
+];
+
+const backgroundTokens = [
+	{ token: "--color-bg-primary", value: "#fdfaf5", usage: "Light page canvas" },
+	{ token: "--color-bg-secondary", value: "#ffffff", usage: "Cards and panels" },
+	{ token: "--color-bg-primary-dark", value: "#0b1220", usage: "Dark page canvas" },
+	{ token: "--color-bg-secondary-dark", value: "#0f1b2d", usage: "Dark cards and panels" },
+];
+
+const typeTokens = [
+	{ token: "--font-brand", value: "Instrument Serif", usage: "Display headings and large section titles" },
+	{ token: "--font-sans", value: "Inter", usage: "Body text, navigation, buttons, UI labels" },
+	{ token: "--font-body", value: "Inter", usage: "Long-form content" },
+];
+
+const rules = [
+	"Use existing components before creating new ones.",
+	"Prefer token values over one-off colors.",
+	"Keep light and dark mode styles paired.",
+	"Use dashed separators for major content breaks.",
+	"Keep cards restrained with subtle borders and low shadow.",
+	"Respect prefers-reduced-motion for component animation.",
+];
+
+const patterns = [
+	{ title: "Marketing sections", desc: "Use .site-container, SectionHeader, responsive grids, and dashed separators." },
+	{ title: "Article pages", desc: "Use the PostLayout, article styles, TOC, reading progress, and MDX content entries." },
+	{ title: "Theme reference", desc: "Use /elements to inspect buttons, badges, cards, forms, layout primitives, and motion." },
+];
+---
+
+<Layout
+	title="DESIGN.md - RicoUI Astro Starter"
+	description="A web preview of the RicoUI Astro Starter design system, token map, source files, UI rules, and element theme guidance."
+>
+	<section class="site-container my-12">
+		<PageHeader
+			title="DESIGN.md"
+			description="The starter's design system, shown as a readable website page."
+		/>
+	</section>
+
+	<section class="site-container py-8 md:py-12">
+		<div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+			<div class="rounded-xl border border-primary/10 bg-bg-secondary p-6 dark:border-neutral-700 dark:bg-bg-secondary-dark">
+				<div class="mb-4 inline-flex items-center gap-2 rounded-md bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20 dark:text-primary-light">
+					<FileText class="h-3.5 w-3.5" /> docs/DESIGN.md
+				</div>
+				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">
+					A calm product-site theme with documented tokens
+				</h2>
+				<p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
+					RicoUI uses a warm light canvas, blue primary accent, gold highlight, editorial display typography, dashed separators, restrained card borders, subtle motion, and class-based dark mode.
+				</p>
+				<div class="mt-6 flex flex-wrap gap-3">
+					<Button url="/elements" type="fill">
+						View Elements <ArrowRight size={16} />
+					</Button>
+					<Button url="https://github.com/ricocc/ricoui-astro-starter/blob/main/docs/DESIGN.md" target="_blank">
+						Open raw file
+					</Button>
+				</div>
+			</div>
+
+			<div class="rounded-xl border border-dashed border-primary/20 bg-bg-secondary p-6 dark:border-neutral-700 dark:bg-bg-secondary-dark">
+				<h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+					<Route class="h-4 w-4 text-primary" /> Source files
+				</h3>
+				<div class="grid gap-2">
+					{sourceFiles.map((file) => (
+						<div class="rounded-lg bg-bg-primary px-3 py-2 font-mono text-xs text-neutral-600 dark:bg-neutral-800/60 dark:text-neutral-300">
+							{file}
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="site-container py-16 md:py-20">
+		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+			<div>
+				<Badge variant="primary">Tokens</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Color system</h2>
+			</div>
+			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+				Edit these in src/styles/global.css. The Elements page uses the same values, so visual changes are easy to inspect.
+			</p>
+		</div>
+
+		<div class="grid gap-6 lg:grid-cols-2">
+			{[
+				{ title: "Brand", icon: Palette, items: brandTokens },
+				{ title: "Background", icon: Palette, items: backgroundTokens },
+			].map((group) => (
+				<div class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark">
+					<h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+						<group.icon class="h-4 w-4 text-primary" /> {group.title}
+					</h3>
+					<div class="grid gap-3">
+						{group.items.map((item) => (
+							<div class="grid gap-3 rounded-lg border border-primary/10 p-3 dark:border-neutral-700 sm:grid-cols-[auto_1fr]">
+								<div class="h-12 w-16 rounded-md border border-white/70 shadow-sm dark:border-white/10" style={`background:${item.value}`}></div>
+								<div>
+									<div class="flex flex-wrap items-center gap-2">
+										<span class="font-mono text-xs text-primary">{item.token}</span>
+										<span class="font-mono text-xs text-neutral-400">{item.value}</span>
+									</div>
+									<p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">{item.usage}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<section class="site-container py-16 md:py-20">
+		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+			<div>
+				<Badge variant="accent">Typography</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Editorial display, clean UI body</h2>
+				<p class="mt-4 leading-relaxed text-neutral-600 dark:text-neutral-300">
+					Use the serif display font for expressive headings, and keep interface text in the sans family for clarity.
+				</p>
+			</div>
+			<div class="grid gap-3">
+				{typeTokens.map((item) => (
+					<div class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark">
+						<div class="mb-2 flex items-center gap-2">
+							<Type class="h-4 w-4 text-primary" />
+							<span class="font-mono text-xs text-primary">{item.token}</span>
+						</div>
+						<p class="text-2xl text-neutral-800 dark:text-neutral-100" class:list={[item.token === "--font-brand" ? "font-brand" : "font-sans"]}>
+							{item.value}
+						</p>
+						<p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">{item.usage}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="site-container py-16 md:py-20">
+		<div class="grid gap-8 lg:grid-cols-2">
+			<div>
+				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">UI rules</h2>
+				<div class="grid gap-3">
+					{rules.map((rule) => (
+						<div class="rounded-lg border border-dashed border-primary/20 bg-bg-secondary px-4 py-3 text-sm text-neutral-600 dark:border-neutral-700 dark:bg-bg-secondary-dark dark:text-neutral-300">
+							{rule}
+						</div>
+					))}
+				</div>
+			</div>
+			<div>
+				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Page patterns</h2>
+				<div class="grid gap-4">
+					{patterns.map((pattern) => (
+						<article class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark">
+							<h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">{pattern.title}</h3>
+							<p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">{pattern.desc}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
