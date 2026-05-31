@@ -1,6 +1,6 @@
 # Forest Green Theme
 
-Forest Green is a grounded botanical color theme inspired by `docs/DESIGN/green.md`. It uses ink text, paper surfaces, and a calm green primary.
+Forest Green is a grounded botanical color theme. It uses ink text, paper surfaces, and a calm green primary.
 
 ## Runtime
 

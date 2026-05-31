@@ -1,4 +1,4 @@
-const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "https://ricoui.com";
+const SITE_URL = import.meta.env.PUBLIC_SITE_URL || "https://example.com";
 
 export const siteConfig = {
 	title: "RicoUI Astro Starter",

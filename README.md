@@ -17,8 +17,8 @@ It is built for people who want to start from a finished visual language instead
 - MDX Blog with list, detail pages, pagination, RSS, and article styling
 - `/design` page that presents the DESIGN.md system as a website page
 - `/elements` page for the website theme: colors, typography, buttons, badges, cards, forms, layout primitives, and icons
-- Header theme switcher with `Retro Blue`, `Minimal Mono`, and `Forest Green`
-- Tailwind CSS v4 tokens in `src/styles/global.css`
+- Header theme switcher with 10 built-in color themes
+- Tailwind CSS v4 base tokens in `src/styles/global.css` and theme overrides in `src/styles/themes.css`
 - Dark mode with localStorage persistence
 - Astro Content Layer setup for posts
 - SEO metadata, sitemap, RSS feed, and custom 404 page
@@ -38,7 +38,8 @@ The dev server runs on `http://localhost:5200` by default.
 | --- | --- |
 | `src/config/site.js` | Site title, metadata, author, repository, social links |
 | `src/config/themes.js` | Theme ids, names, swatches, source notes, and semantic token values |
-| `src/styles/global.css` | Theme tokens, fonts, colors, containers, global styles |
+| `src/styles/global.css` | Tailwind v4 base tokens, default theme, fonts, containers, global styles |
+| `src/styles/themes.css` | Non-default theme variable overrides |
 | `docs/DESIGN.md` | Human-readable design system notes |
 | `src/pages/elements.astro` | Visual reference for the component theme |
 | `src/content/post/` | Blog posts |
@@ -52,6 +53,13 @@ Use the Header theme switcher while developing to preview the site in different 
 | Retro Blue | `retro-blue` | `docs/DESIGN/retro-blue.md` |
 | Minimal Mono | `minimal-mono` | `docs/DESIGN/minimal-mono.md` |
 | Forest Green | `forest-green` | `docs/DESIGN/forest-green.md` |
+| Claude | `claude` | `docs/DESIGN/claude.md` |
+| Creator Yellow | `creator-yellow` | `docs/DESIGN/creator-yellow.md` |
+| Precision Orange | `precision-orange` | `docs/DESIGN/precision-orange.md` |
+| Comic Pulp | `comic-pulp` | `docs/DESIGN/comic-pulp.md` |
+| Midnight Pastel | `midnight-pastel` | `docs/DESIGN/midnight-pastel.md` |
+| Sky Blue | `sky-blue` | `docs/DESIGN/sky-blue.md` |
+| Rico Red | `rico-red` | `docs/DESIGN/rico-red.md` |
 
 Configure the default theme in `src/config/themes.js`:
 
@@ -65,7 +73,9 @@ export const themeSettings = {
 };
 ```
 
-For a fixed production theme, set `defaultThemeId` to the theme you want, then set `showThemeSwitcher: false` and `persistUserSelection: false`. When persistence is enabled, the active theme is stored in `localStorage.theme_id`, mirrored to a `theme_id` cookie fallback, and applied through `<html data-theme="...">`. Add or edit themes in `src/config/themes.js`, mirror the CSS variable overrides in `src/styles/global.css`, and create one paired DESIGN.md file per theme with both Light and Dark token sections.
+For a fixed production theme, set `defaultThemeId` to the theme you want, then set `showThemeSwitcher: false` and `persistUserSelection: false`. When persistence is enabled, the active theme is stored in `localStorage.theme_id`, mirrored to a `theme_id` cookie fallback, and applied through `<html data-theme="...">`.
+
+Add or edit themes in `src/config/themes.js`. Keep the default `retro-blue` variables in `src/styles/global.css`, put non-default theme overrides in `src/styles/themes.css`, and create one paired DESIGN.md file per theme with both Light and Dark token sections.
 
 ## Routes
 
@@ -87,6 +97,7 @@ docs/
     retro-blue.md
     minimal-mono.md
     forest-green.md
+    ...
   DESIGN.md
 public/
   assets/
@@ -106,6 +117,7 @@ src/
     rss.xml.js
   styles/
     global.css
+    themes.css
     article.css
 ```
 

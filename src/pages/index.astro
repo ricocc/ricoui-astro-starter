@@ -10,11 +10,14 @@ import {
 	ArrowRight,
 	BookOpen,
 	Brush,
+	FilePenLine,
 	FileText,
 	FolderOpen,
 	Layers,
+	LayoutTemplate,
 	Palette,
 	Rss,
+	Settings,
 	Sparkles,
 } from "@lucide/astro";
 
@@ -51,10 +54,26 @@ const fileMap = [
 ];
 
 const workflow = [
-	"Edit site metadata in src/config/site.js",
-	"Adjust tokens in src/styles/global.css",
-	"Write posts in src/content/post",
-	"Compose new pages from the Elements reference",
+	{
+		icon: Settings,
+		title: "Site metadata",
+		desc: "Edit src/config/site.js",
+	},
+	{
+		icon: Palette,
+		title: "Theme tokens",
+		desc: "Tune colors in global.css and themes.css",
+	},
+	{
+		icon: FilePenLine,
+		title: "Content posts",
+		desc: "Write MDX in src/content/post",
+	},
+	{
+		icon: LayoutTemplate,
+		title: "Page composition",
+		desc: "Build from the Elements reference",
+	},
 ];
 ---
 
@@ -133,12 +152,18 @@ const workflow = [
 		<div class="mt-8 grid gap-4 md:grid-cols-4">
 			{workflow.map((step, index) => (
 				<div
-					class="rounded-xl border border-dashed border-primary/20 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark"
+					class="group rounded-xl border border-dashed border-primary/20 bg-bg-secondary p-5 transition-colors duration-200 hover:border-primary/35 hover:bg-primary/5 dark:border-neutral-700 dark:bg-bg-secondary-dark dark:hover:border-primary/40 dark:hover:bg-primary/10"
 				>
-					<span class="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary text-sm font-semibold text-btn-primary-text">
-						{index + 1}
-					</span>
-					<p class="text-sm font-medium leading-relaxed text-neutral-700 dark:text-neutral-200">{step}</p>
+					<div class="mb-5 flex items-start justify-between gap-4">
+						<span class="grid h-10 w-10 flex-none place-items-center rounded-lg bg-primary/10 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-btn-primary-text dark:bg-primary/20 dark:text-primary-light">
+							<step.icon class="h-5 w-5" />
+						</span>
+						<span class="font-mono text-xs font-medium text-primary/75 dark:text-primary-light">
+							{String(index + 1).padStart(2, "0")}
+						</span>
+					</div>
+					<h3 class="mb-2 text-base font-semibold text-neutral-800 dark:text-neutral-100">{step.title}</h3>
+					<p class="font-mono text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">{step.desc}</p>
 				</div>
 			))}
 		</div>

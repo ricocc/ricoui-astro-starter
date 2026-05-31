@@ -1,6 +1,6 @@
 # Minimal Mono Theme
 
-Minimal Mono is a black, white, and warm gray color theme inspired by `docs/DESIGN/basic.md`. It keeps the RicoUI layout and typography but removes saturated color from the interface.
+Minimal Mono is a black, white, and warm gray color theme. It keeps the RicoUI layout and typography but removes saturated color from the interface.
 
 ## Runtime
 

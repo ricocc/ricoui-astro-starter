@@ -9,6 +9,7 @@ import { ArrowRight, FileText, Route, Type } from "@lucide/astro";
 const sourceFiles = [
 	"src/config/themes.js",
 	"src/styles/global.css",
+	"src/styles/themes.css",
 	"src/layouts/Layout.astro",
 	"src/components/sections/Header.astro",
 	"docs/DESIGN.md",
@@ -43,7 +44,7 @@ const rules = [
 	"Use localStorage.theme_id, a theme_id cookie fallback, and html[data-theme] for runtime selection.",
 	"Keep light and dark mode styles paired for every theme.",
 	"Keep one DESIGN.md file per theme, with separate Light and Dark token sections inside that file.",
-	"Treat docs/DESIGN/basic.md and docs/DESIGN/green.md as color inspiration, not full component replacements.",
+	"Treat each theme as a color system, not a full component replacement.",
 ];
 
 const patterns = [
@@ -113,6 +114,83 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 					))}
 				</div>
 			</div>
+		</div>
+	</section>
+
+	<section class="site-container py-16 md:py-20">
+		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+			<div>
+				<Badge variant="accent">Details</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Theme details</h2>
+			</div>
+			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+				Each theme keeps the starter structure intact. Expand a theme to see the source mood, color roles, and implementation guidance.
+			</p>
+		</div>
+
+		<div class="grid gap-4">
+			{themes.map((theme) => (
+				<details
+					class="group overflow-hidden rounded-xl border border-primary/10 bg-bg-secondary dark:border-neutral-700 dark:bg-bg-secondary-dark"
+					style={styleFromTokens(theme.tokens.light)}
+				>
+					<summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-primary/5 [&::-webkit-details-marker]:hidden">
+						<span class="min-w-0">
+							<span class="mb-1 flex flex-wrap items-center gap-2">
+								<span class="flex h-6 w-12 overflow-hidden rounded-md border border-white/70 shadow-sm">
+									{theme.swatches.slice(0, 4).map((color) => (
+										<span class="h-full flex-1" style={`background:${color}`}></span>
+									))}
+								</span>
+								<span class="text-lg font-semibold text-text-primary">{theme.name}</span>
+							</span>
+							<span class="block text-xs leading-relaxed text-text-tertiary">{theme.source}</span>
+						</span>
+						<span class="flex-none rounded-full border border-primary/15 px-3 py-1 text-xs font-medium text-text-secondary transition-colors group-open:bg-btn-primary group-open:text-btn-primary-text">
+							Details
+						</span>
+					</summary>
+					<div class="border-t border-primary/10 px-5 py-5">
+						<p class="max-w-3xl text-sm leading-relaxed text-text-secondary">{theme.details.atmosphere}</p>
+						<div class="mt-5 grid gap-4 lg:grid-cols-3">
+							<div class="rounded-lg bg-bg-primary p-4">
+								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">Best for</p>
+								<div class="flex flex-wrap gap-2">
+									{theme.details.bestFor.map((item) => (
+										<span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-text-primary">{item}</span>
+									))}
+								</div>
+							</div>
+							<div class="rounded-lg bg-bg-primary p-4 lg:col-span-2">
+								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">Color roles</p>
+								<div class="grid gap-3 md:grid-cols-3">
+									{theme.details.colorRoles.map((role) => (
+										<div>
+											<div class="mb-2 flex items-center gap-2">
+												<span class="h-5 w-5 rounded-md border border-white/70 shadow-sm" style={`background:${role.value}`}></span>
+												<span class="text-sm font-semibold text-text-primary">{role.name}</span>
+											</div>
+											<p class="font-mono text-[11px] text-text-tertiary">{role.value}</p>
+											<p class="mt-1 text-xs leading-relaxed text-text-secondary">{role.role}</p>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+						<div class="mt-4 rounded-lg border border-primary/10 bg-bg-primary p-4">
+							<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+								<p class="text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">Guidance</p>
+								<span class="font-mono text-[11px] text-text-tertiary">{theme.designDoc}</span>
+							</div>
+							<ul class="grid gap-2 text-sm leading-relaxed text-text-secondary md:grid-cols-3">
+								{theme.details.guidance.map((item) => (
+									<li>{item}</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				</details>
+			))}
 		</div>
 	</section>
 
