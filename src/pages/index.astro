@@ -71,12 +71,9 @@ const workflow = [
 			description="The template keeps the useful parts visible and removes product-specific demo pages, pricing copy, auth screens, and release-note filler from the public site."
 		/>
 		<div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-			{starterScope.map((item, index) => (
+			{starterScope.map((item) => (
 				<article
-					class="rounded-xl border border-primary/10 bg-bg-secondary p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(45,109,195,0.08)] dark:border-neutral-700 dark:bg-bg-secondary-dark"
-					data-aos="fade-up-sm"
-					data-aos-delay={index * 90}
-					data-aos-once="true"
+					class="rounded-xl border border-primary/10 bg-bg-secondary p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(var(--color-primary-rgb),0.08)] dark:border-neutral-700 dark:bg-bg-secondary-dark"
 				>
 					<div class="mb-4 grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light">
 						<item.icon class="h-5 w-5" />
@@ -92,7 +89,7 @@ const workflow = [
 
 	<section class="site-container py-16 md:py-24">
 		<div class="grid items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-			<div data-aos="fade-up-xs" data-aos-once="true">
+			<div>
 				<div class="mb-4 inline-flex items-center gap-2 rounded-md border border-dashed border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
 					<Brush class="h-3.5 w-3.5" /> Theme workflow
 				</div>
@@ -110,7 +107,7 @@ const workflow = [
 				</div>
 			</div>
 
-			<BrowserFrame url="starter/theme-map" className="w-full" data-aos="fade-up-sm">
+			<BrowserFrame url="starter/theme-map" className="w-full">
 				<div class="grid gap-3 p-4 md:p-5">
 					{fileMap.map((file) => (
 						<div class="grid grid-cols-[1fr_auto] items-center gap-4 rounded-lg border border-primary/10 bg-bg-primary/50 px-4 py-3 dark:border-neutral-700 dark:bg-neutral-800/40">
@@ -137,11 +134,8 @@ const workflow = [
 			{workflow.map((step, index) => (
 				<div
 					class="rounded-xl border border-dashed border-primary/20 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark"
-					data-aos="fade-up-sm"
-					data-aos-delay={index * 80}
-					data-aos-once="true"
 				>
-					<span class="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary text-sm font-semibold text-white">
+					<span class="mb-4 inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary text-sm font-semibold text-btn-primary-text">
 						{index + 1}
 					</span>
 					<p class="text-sm font-medium leading-relaxed text-neutral-700 dark:text-neutral-200">{step}</p>
@@ -161,7 +155,9 @@ const workflow = [
 	</section>
 
 	<section class="site-container py-12 md:py-20">
-		<div class="rounded-xl border border-primary/10 bg-bg-secondary p-7 text-center dark:border-neutral-700 dark:bg-bg-secondary-dark md:p-10">
+		<div
+			class="rounded-xl border border-primary/10 bg-bg-secondary p-7 text-center dark:border-neutral-700 dark:bg-bg-secondary-dark md:p-10"
+		>
 			<div class="mb-4 flex justify-center">
 				<div class="grid h-12 w-12 place-items-center rounded-xl bg-accent/30 text-neutral-800 dark:bg-accent/20 dark:text-neutral-100">
 					<Sparkles class="h-5 w-5" />

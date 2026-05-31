@@ -1,5 +1,5 @@
 ---
-const { content, layout = "vertical", "data-aos": dataAos, "data-aos-delay": dataAosDelay } = Astro.props;
+const { content, layout = "vertical" } = Astro.props;
 
 const {
   title,
@@ -29,8 +29,6 @@ const isHorizontal = layout === "horizontal";
     "group relative overflow-hidden bg-bg-secondary border-primary/35 p-4 dark:bg-neutral-900 rounded-2xl backdrop-blur-sm transition-all duration-500" ,
     { "md:flex md:items-center": isHorizontal }
   ]}
-  data-aos={dataAos}
-  data-aos-delay={dataAosDelay}
 >
   <!-- Image container -->
   <div

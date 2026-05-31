@@ -2,7 +2,7 @@
 
 A design-led Astro starter template with a clean public surface: Home, Blog, DESIGN.md, and Elements.
 
-It is built for people who want to start from a finished visual language instead of a blank page. The theme includes warm light surfaces, a blue primary accent, a gold highlight color, editorial display typography, class-based dark mode, reusable UI primitives, and MDX-powered blog content.
+It is built for people who want to start from a finished visual language instead of a blank page. The starter includes switchable color themes, editorial display typography, class-based dark mode, reusable UI primitives, and MDX-powered blog content.
 
 ![preview](/docs/screenshot.jpeg)
 
@@ -16,7 +16,8 @@ It is built for people who want to start from a finished visual language instead
 - Home page for the starter theme
 - MDX Blog with list, detail pages, pagination, RSS, and article styling
 - `/design` page that presents the DESIGN.md system as a website page
-- `/elements` page for the website theme: colors, typography, buttons, badges, cards, forms, layout primitives, motion, and icons
+- `/elements` page for the website theme: colors, typography, buttons, badges, cards, forms, layout primitives, and icons
+- Header theme switcher with `Retro Blue`, `Minimal Mono`, and `Forest Green`
 - Tailwind CSS v4 tokens in `src/styles/global.css`
 - Dark mode with localStorage persistence
 - Astro Content Layer setup for posts
@@ -36,10 +37,35 @@ The dev server runs on `http://localhost:5200` by default.
 | File | Purpose |
 | --- | --- |
 | `src/config/site.js` | Site title, metadata, author, repository, social links |
+| `src/config/themes.js` | Theme ids, names, swatches, source notes, and semantic token values |
 | `src/styles/global.css` | Theme tokens, fonts, colors, containers, global styles |
 | `docs/DESIGN.md` | Human-readable design system notes |
 | `src/pages/elements.astro` | Visual reference for the component theme |
 | `src/content/post/` | Blog posts |
+
+## Choose a theme
+
+Use the Header theme switcher while developing to preview the site in different color directions.
+
+| Theme | ID | Notes |
+| --- | --- | --- |
+| Retro Blue | `retro-blue` | `docs/DESIGN/retro-blue.md` |
+| Minimal Mono | `minimal-mono` | `docs/DESIGN/minimal-mono.md` |
+| Forest Green | `forest-green` | `docs/DESIGN/forest-green.md` |
+
+Configure the default theme in `src/config/themes.js`:
+
+```js
+export const themeSettings = {
+	defaultThemeId: "retro-blue",
+	showThemeSwitcher: true,
+	persistUserSelection: true,
+	storageKey: "theme_id",
+	cookieName: "theme_id",
+};
+```
+
+For a fixed production theme, set `defaultThemeId` to the theme you want, then set `showThemeSwitcher: false` and `persistUserSelection: false`. When persistence is enabled, the active theme is stored in `localStorage.theme_id`, mirrored to a `theme_id` cookie fallback, and applied through `<html data-theme="...">`. Add or edit themes in `src/config/themes.js`, mirror the CSS variable overrides in `src/styles/global.css`, and create one paired DESIGN.md file per theme with both Light and Dark token sections.
 
 ## Routes
 
@@ -57,8 +83,11 @@ The dev server runs on `http://localhost:5200` by default.
 
 ```txt
 docs/
+  DESIGN/
+    retro-blue.md
+    minimal-mono.md
+    forest-green.md
   DESIGN.md
-  DESIGN-PREVIEW.html
 public/
   assets/
   favicon.png

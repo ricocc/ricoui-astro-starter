@@ -1,5 +1,4 @@
 // Add your javascript here
-import AOS from 'aos';
 
 window.darkMode = false;
 
@@ -8,10 +7,10 @@ const unstickyClasses = [];
 const stickyClassesContainer = [
 	"shadow-[0px_1px_4px_0_rgba(25,33,61,0.06)]",
 	"rounded-[20px]",
-	"bg-[#ffffff]/65",
-	"border-[#ffffff]/65",
-	"dark:border-neutral-600/40",
-	"dark:bg-neutral-900/60",
+	"bg-bg-secondary/65",
+	"border-bg-secondary/65",
+	"dark:border-primary/20",
+	"dark:bg-bg-secondary-dark/70",
 	"backdrop-blur-2xl",
 	"backdrop-brightness-120",
 ];
@@ -39,15 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	applyMenuItemClasses();
 	evaluateHeaderPosition();
 	mobileMenuFunctionality();
-
-	// 初始化 AOS
-	AOS.init({
-		duration: 400,
-		easing: 'ease-out-cubic',
-		once: true,
-		offset: 20,
-		delay: 0,
-	});
 });
 
 // window.toggleDarkMode = function(){

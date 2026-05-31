@@ -3,28 +3,31 @@ import Layout from "@/layouts/Layout.astro";
 import PageHeader from "@/components/elements/PageHeader.astro";
 import Button from "@/components/ui/Button.astro";
 import Badge from "@/components/ui/Badge.astro";
-import { ArrowRight, FileText, Palette, Route, Type } from "@lucide/astro";
+import { themes } from "@/config/themes";
+import { ArrowRight, FileText, Route, Type } from "@lucide/astro";
 
 const sourceFiles = [
+	"src/config/themes.js",
 	"src/styles/global.css",
-	"tailwind.config.mjs",
 	"src/layouts/Layout.astro",
-	"src/assets/js/main.js",
+	"src/components/sections/Header.astro",
 	"docs/DESIGN.md",
+	"docs/DESIGN/{theme-id}.md",
 ];
 
-const brandTokens = [
-	{ token: "--color-primary", value: "#2d6dc3", usage: "Brand color, links, CTAs, headings" },
-	{ token: "--color-primary-strong", value: "#0066ff", usage: "Hover and emphasis" },
-	{ token: "--color-primary-light", value: "#8fb9ff", usage: "Light accents" },
-	{ token: "--color-accent", value: "#fad13b", usage: "Badges and highlights" },
-];
-
-const backgroundTokens = [
-	{ token: "--color-bg-primary", value: "#fdfaf5", usage: "Light page canvas" },
-	{ token: "--color-bg-secondary", value: "#ffffff", usage: "Cards and panels" },
-	{ token: "--color-bg-primary-dark", value: "#0b1220", usage: "Dark page canvas" },
-	{ token: "--color-bg-secondary-dark", value: "#0f1b2d", usage: "Dark cards and panels" },
+const tokenRows = [
+	{ token: "--color-primary", usage: "Brand color, links, CTAs, headings" },
+	{ token: "--color-primary-strong", usage: "Hover and emphasis" },
+	{ token: "--color-primary-light", usage: "Soft accents and focus surfaces" },
+	{ token: "--color-accent", usage: "Badges and secondary highlights" },
+	{ token: "--color-bg-primary", usage: "Light page canvas" },
+	{ token: "--color-bg-secondary", usage: "Cards and panels" },
+	{ token: "--color-text-primary", usage: "Headings and emphasized text" },
+	{ token: "--color-text-secondary", usage: "Body text" },
+	{ token: "--color-text-tertiary", usage: "Muted metadata" },
+	{ token: "--color-btn-primary", usage: "Filled button background" },
+	{ token: "--color-btn-primary-hover", usage: "Filled button hover background" },
+	{ token: "--color-btn-primary-text", usage: "Filled button foreground" },
 ];
 
 const typeTokens = [
@@ -34,29 +37,45 @@ const typeTokens = [
 ];
 
 const rules = [
-	"Use existing components before creating new ones.",
-	"Prefer token values over one-off colors.",
-	"Keep light and dark mode styles paired.",
-	"Use dashed separators for major content breaks.",
-	"Keep cards restrained with subtle borders and low shadow.",
-	"Respect prefers-reduced-motion for component animation.",
+	"Theme switching changes semantic color tokens only.",
+	"Typography, spacing, radii, layout, and component structure stay stable.",
+	"Use src/config/themes.js as the source of truth for theme options.",
+	"Use localStorage.theme_id, a theme_id cookie fallback, and html[data-theme] for runtime selection.",
+	"Keep light and dark mode styles paired for every theme.",
+	"Keep one DESIGN.md file per theme, with separate Light and Dark token sections inside that file.",
+	"Treat docs/DESIGN/basic.md and docs/DESIGN/green.md as color inspiration, not full component replacements.",
 ];
 
 const patterns = [
 	{ title: "Marketing sections", desc: "Use .site-container, SectionHeader, responsive grids, and dashed separators." },
 	{ title: "Article pages", desc: "Use the PostLayout, article styles, TOC, reading progress, and MDX content entries." },
-	{ title: "Theme reference", desc: "Use /elements to inspect buttons, badges, cards, forms, layout primitives, and motion." },
+	{ title: "Theme reference", desc: "Use /elements to inspect how the active theme affects real components." },
 ];
+
+const styleFromTokens = (tokens: Record<string, string>) => {
+	const previewTokens = {
+		...tokens,
+		"--color-btn-primary": tokens["--color-btn-primary"] ?? tokens["--color-primary"],
+		"--color-btn-primary-hover": tokens["--color-btn-primary-hover"] ?? tokens["--color-primary-strong"],
+		"--color-btn-primary-text": tokens["--color-btn-primary-text"] ?? "#ffffff",
+		"--color-primary-bg": tokens["--color-bg-primary"],
+		"--color-primary-bg-light": tokens["--color-bg-secondary"],
+	};
+
+	return Object.entries(previewTokens)
+		.map(([key, value]) => `${key}:${value}`)
+		.join(";");
+};
 ---
 
 <Layout
 	title="DESIGN.md - RicoUI Astro Starter"
-	description="A web preview of the RicoUI Astro Starter design system, token map, source files, UI rules, and element theme guidance."
+	description="A web preview of the RicoUI Astro Starter theme system, token map, source files, UI rules, and element guidance."
 >
 	<section class="site-container my-12">
 		<PageHeader
 			title="DESIGN.md"
-			description="The starter's design system, shown as a readable website page."
+			description="The starter's design system, theme colors, and implementation rules."
 		/>
 	</section>
 
@@ -64,13 +83,13 @@ const patterns = [
 		<div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
 			<div class="rounded-xl border border-primary/10 bg-bg-secondary p-6 dark:border-neutral-700 dark:bg-bg-secondary-dark">
 				<div class="mb-4 inline-flex items-center gap-2 rounded-md bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20 dark:text-primary-light">
-					<FileText class="h-3.5 w-3.5" /> docs/DESIGN.md
+					<FileText class="h-3.5 w-3.5" /> Theme system
 				</div>
 				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">
-					A calm product-site theme with documented tokens
+					Choose a color direction without changing the whole system
 				</h2>
 				<p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
-					RicoUI uses a warm light canvas, blue primary accent, gold highlight, editorial display typography, dashed separators, restrained card borders, subtle motion, and class-based dark mode.
+					RicoUI now ships with color theme packs. They switch semantic color tokens while preserving the template's typography, spacing, layout, radius, and component behavior.
 				</p>
 				<div class="mt-6 flex flex-wrap gap-3">
 					<Button url="/elements" type="fill">
@@ -100,39 +119,108 @@ const patterns = [
 	<section class="site-container py-16 md:py-20">
 		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
 			<div>
-				<Badge variant="primary">Tokens</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Color system</h2>
+				<Badge variant="primary">Themes</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Theme gallery</h2>
 			</div>
 			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-				Edit these in src/styles/global.css. The Elements page uses the same values, so visual changes are easy to inspect.
+				Use the Header switcher to preview these across the full site. Each card below renders from the same theme configuration.
 			</p>
 		</div>
 
-		<div class="grid gap-6 lg:grid-cols-2">
-			{[
-				{ title: "Brand", icon: Palette, items: brandTokens },
-				{ title: "Background", icon: Palette, items: backgroundTokens },
-			].map((group) => (
-				<div class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark">
-					<h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-						<group.icon class="h-4 w-4 text-primary" /> {group.title}
-					</h3>
-					<div class="grid gap-3">
-						{group.items.map((item) => (
-							<div class="grid gap-3 rounded-lg border border-primary/10 p-3 dark:border-neutral-700 sm:grid-cols-[auto_1fr]">
-								<div class="h-12 w-16 rounded-md border border-white/70 shadow-sm dark:border-white/10" style={`background:${item.value}`}></div>
-								<div>
-									<div class="flex flex-wrap items-center gap-2">
-										<span class="font-mono text-xs text-primary">{item.token}</span>
-										<span class="font-mono text-xs text-neutral-400">{item.value}</span>
-									</div>
-									<p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">{item.usage}</p>
+		<div class="-mx-4 overflow-x-auto px-4 pb-4">
+			<div class="grid auto-cols-[minmax(280px,340px)] grid-flow-col gap-5">
+			{themes.map((theme) => (
+				<article
+					class="overflow-hidden rounded-xl border border-primary/10 bg-bg-secondary dark:border-neutral-700 dark:bg-bg-secondary-dark"
+					style={styleFromTokens(theme.tokens.light)}
+				>
+					<div class="flex h-20">
+						{theme.swatches.map((color) => (
+							<div class="flex-1" style={`background:${color}`}></div>
+						))}
+					</div>
+					<div class="p-5">
+						<p class="mb-1 text-xs font-medium uppercase tracking-[0.14em] text-neutral-400">{theme.source}</p>
+						<h3 class="mb-2 text-2xl font-brand text-text-primary">{theme.name}</h3>
+						<p class="mb-5 text-sm leading-relaxed text-text-secondary">{theme.description}</p>
+						<div class="mb-4 grid gap-2">
+							<div>
+								<p class="mb-1 text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400">Light</p>
+								<div class="flex h-7 overflow-hidden rounded-md border border-white/70 shadow-sm">
+									{theme.lightSwatches.map((color) => (
+										<span class="flex-1" style={`background:${color}`}></span>
+									))}
 								</div>
+							</div>
+							<div>
+								<p class="mb-1 text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400">Dark</p>
+								<div class="flex h-7 overflow-hidden rounded-md border border-white/20 shadow-sm">
+									{theme.darkSwatches.map((color) => (
+										<span class="flex-1" style={`background:${color}`}></span>
+									))}
+								</div>
+							</div>
+						</div>
+						<div class="rounded-lg border border-primary/15 bg-bg-primary p-4">
+							<p class="mb-2 text-lg font-brand text-text-primary">Heading sample</p>
+							<p class="mb-4 text-sm leading-relaxed text-text-secondary">
+								Body copy keeps the same rhythm while the palette changes around it.
+							</p>
+							<div class="flex flex-wrap items-center gap-2">
+								<span class="inline-flex rounded-lg bg-btn-primary px-3 py-2 text-xs font-medium text-btn-primary-text">
+									Primary action
+								</span>
+								<span class="font-mono text-[11px] text-text-tertiary">{theme.designDoc}</span>
+							</div>
+						</div>
+					</div>
+				</article>
+			))}
+			</div>
+		</div>
+	</section>
+
+	<section class="site-container py-16 md:py-20">
+		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+			<div>
+				<Badge variant="primary">Tokens</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Semantic color map</h2>
+			</div>
+			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+				These are the values a developer should adjust when adding another color theme.
+			</p>
+		</div>
+
+		<div class="overflow-x-auto rounded-xl border border-primary/10 bg-bg-secondary dark:border-neutral-700 dark:bg-bg-secondary-dark">
+			<div style={`min-width: ${260 + themes.length * 190}px;`}>
+				<div
+					class="grid gap-3 border-b border-dashed border-primary/10 px-4 py-3 text-xs font-medium uppercase tracking-[0.14em] text-neutral-400 dark:border-neutral-700"
+					style={`grid-template-columns: minmax(240px,1.1fr) repeat(${themes.length}, minmax(170px,1fr));`}
+				>
+					<span>Token</span>
+					{themes.map((theme) => <span>{theme.name}</span>)}
+				</div>
+				{tokenRows.map((row) => (
+					<div
+						class="grid gap-3 border-b border-primary/5 px-4 py-3 last:border-0 dark:border-neutral-700/50"
+						style={`grid-template-columns: minmax(240px,1.1fr) repeat(${themes.length}, minmax(170px,1fr));`}
+					>
+						<div>
+							<p class="font-mono text-xs text-primary">{row.token}</p>
+							<p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{row.usage}</p>
+						</div>
+						{themes.map((theme) => (
+							<div class="flex items-center gap-2">
+								<span
+									class="h-7 w-7 rounded-md border border-white/70 shadow-sm dark:border-white/10"
+									style={`background:${theme.tokens.light[row.token]}`}
+								></span>
+								<span class="font-mono text-xs text-neutral-500 dark:text-neutral-400">{theme.tokens.light[row.token]}</span>
 							</div>
 						))}
 					</div>
-				</div>
-			))}
+				))}
+			</div>
 		</div>
 	</section>
 
@@ -140,19 +228,21 @@ const patterns = [
 		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
 			<div>
 				<Badge variant="accent">Typography</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Editorial display, clean UI body</h2>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Type stays consistent</h2>
 				<p class="mt-4 leading-relaxed text-neutral-600 dark:text-neutral-300">
-					Use the serif display font for expressive headings, and keep interface text in the sans family for clarity.
+					The theme switcher is intentionally color-only. Fonts and spacing remain stable so developers can compare palettes without rebuilding the interface.
 				</p>
 			</div>
 			<div class="grid gap-3">
 				{typeTokens.map((item) => (
-					<div class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark">
+					<div
+						class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark"
+					>
 						<div class="mb-2 flex items-center gap-2">
 							<Type class="h-4 w-4 text-primary" />
 							<span class="font-mono text-xs text-primary">{item.token}</span>
 						</div>
-						<p class="text-2xl text-neutral-800 dark:text-neutral-100" class:list={[item.token === "--font-brand" ? "font-brand" : "font-sans"]}>
+						<p class:list={["text-2xl text-neutral-800 dark:text-neutral-100", item.token === "--font-brand" ? "font-brand" : "font-sans"]}>
 							{item.value}
 						</p>
 						<p class="mt-2 text-sm text-neutral-500 dark:text-neutral-400">{item.usage}</p>
@@ -165,10 +255,12 @@ const patterns = [
 	<section class="site-container py-16 md:py-20">
 		<div class="grid gap-8 lg:grid-cols-2">
 			<div>
-				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">UI rules</h2>
+				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Theme rules</h2>
 				<div class="grid gap-3">
 					{rules.map((rule) => (
-						<div class="rounded-lg border border-dashed border-primary/20 bg-bg-secondary px-4 py-3 text-sm text-neutral-600 dark:border-neutral-700 dark:bg-bg-secondary-dark dark:text-neutral-300">
+						<div
+							class="rounded-lg border border-dashed border-primary/20 bg-bg-secondary px-4 py-3 text-sm text-neutral-600 dark:border-neutral-700 dark:bg-bg-secondary-dark dark:text-neutral-300"
+						>
 							{rule}
 						</div>
 					))}
@@ -178,7 +270,9 @@ const patterns = [
 				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Page patterns</h2>
 				<div class="grid gap-4">
 					{patterns.map((pattern) => (
-						<article class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark">
+						<article
+							class="rounded-xl border border-primary/10 bg-bg-secondary p-5 dark:border-neutral-700 dark:bg-bg-secondary-dark"
+						>
 							<h3 class="mb-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">{pattern.title}</h3>
 							<p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">{pattern.desc}</p>
 						</article>

@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/site";
 <PageLayout title="Page Not Found - RicoUI Astro Starter" description="The page you're looking for doesn't exist.">
   <section class="site-container py-14 md:py-24">
     <div class="grid min-h-[62vh] items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)]">
-      <div data-aos="fade-up-xs" data-aos-once="true">
+      <div>
         <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary dark:border-primary-light/20 dark:bg-primary-light/10 dark:text-primary-light">
           <ShieldAlert size={14} />
           Error 404
@@ -35,9 +35,6 @@ import { siteConfig } from "@/config/site";
 
       <div
         class="relative mx-auto w-full max-w-lg"
-        data-aos="fade-up-xs"
-        data-aos-delay="120"
-        data-aos-once="true"
       >
         <div class="relative overflow-hidden rounded-2xl border border-neutral-200 bg-bg-secondary/80 p-5 shadow-[0_22px_70px_rgba(25,34,47,0.09)] backdrop-blur dark:border-neutral-700 dark:bg-bg-secondary-dark/80 dark:shadow-[0_22px_70px_rgba(0,0,0,0.24)] sm:p-6">
           <div class="absolute inset-0 opacity-[0.08] dark:opacity-[0.12]">
@@ -56,7 +53,7 @@ import { siteConfig } from "@/config/site";
 
             <div class="rounded-xl border border-dashed border-primary/25 bg-bg-primary/60 p-4 dark:border-primary-light/20 dark:bg-bg-primary-dark/60">
               <div class="flex items-center gap-3">
-                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white">
+                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-btn-primary-text">
                   <Search size={19} />
                 </div>
                 <div class="min-w-0">

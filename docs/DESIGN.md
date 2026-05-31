@@ -5,11 +5,9 @@ This document describes the current visual system implemented in the RicoUI Astr
 
 ## Design Direction
 
-RicoUI Astro Starter uses a calm product-site aesthetic:
+RicoUI Astro Starter uses a calm product-site aesthetic. The default theme is Retro Blue, and additional themes keep the same component rules while changing semantic color tokens.
 
-- Warm light canvas.
-- Blue primary accent.
-- Gold highlight accent.
+- Theme-specific light and dark palettes.
 - Editorial display typography.
 - Dashed separators and restrained card borders.
 - Subtle motion, never heavy animation.
@@ -17,14 +15,42 @@ RicoUI Astro Starter uses a calm product-site aesthetic:
 
 ## Source Files
 
+- `src/config/themes.js` - theme list, swatches, source notes, and semantic color token values.
 - `src/styles/global.css` - tokens, global styles, dark mode variables.
 - `tailwind.config.mjs` - Tailwind content scanning and dark mode strategy.
 - `src/layouts/Layout.astro` - global layout, CSS imports, dark-mode boot script.
-- `src/assets/js/main.js` - dark-mode toggle, sticky header, mobile menu, AOS initialization.
+- `src/components/sections/Header.astro` - navigation, theme switcher, dark-mode toggle.
+- `src/assets/js/main.js` - sticky header, mobile menu helpers, AOS initialization.
+
+## Themes
+
+The starter supports color theme packs. A theme changes semantic color tokens only; it does not change typography, spacing, radius, layout, or component structure.
+
+| Theme | ID | Source |
+| --- | --- | --- |
+| Retro Blue | `retro-blue` | `docs/DESIGN/retro-blue.md` |
+| Minimal Mono | `minimal-mono` | `docs/DESIGN/minimal-mono.md` |
+| Forest Green | `forest-green` | `docs/DESIGN/forest-green.md` |
+
+Runtime interface:
+
+- `themeSettings.defaultThemeId` in `src/config/themes.js` controls the configured starter theme.
+- `themeSettings.showThemeSwitcher` controls whether the Header exposes the theme picker.
+- `themeSettings.persistUserSelection` controls whether runtime choices are saved across pages.
+- Theme selection is stored in `localStorage.theme_id`, with a `theme_id` cookie fallback.
+- The active theme is applied to `<html data-theme="...">`.
+- `src/config/themes.js` exports `themes`, `themeSettings`, `defaultThemeId`, and `themeById`.
+- The Header theme switcher updates the attribute, persists the selection, and dispatches a `themechange` event.
+
+For a fixed production theme, set `themeSettings.defaultThemeId` to the desired theme id, set `showThemeSwitcher: false`, and set `persistUserSelection: false`. This prevents a previous localStorage value from overriding the configured theme for end users.
+
+Each theme should have one paired DESIGN.md file. Put both `Light Tokens` and `Dark Tokens` in that same file instead of splitting light and dark into separate documents. This keeps a theme easy to copy, review, and maintain.
+
+When adding a new theme, define light and dark values for the semantic tokens below, add `lightSwatches`, `darkSwatches`, and `designDoc` in `src/config/themes.js`, then add the paired file under `docs/DESIGN/`. Keep component rules stable unless you intentionally create a separate template.
 
 ## Color Tokens
 
-Defined in `src/styles/global.css`.
+Defined in `src/styles/global.css` and overridden by `html[data-theme="..."]`.
 
 ### Brand
 
@@ -35,6 +61,16 @@ Defined in `src/styles/global.css`.
 | `--color-primary-light` | `#8fb9ff` | Light accents |
 | `--color-accent` | `#fad13b` | Badges, highlights |
 | `--color-accent-light` | `#faeb75` | Softer accent states |
+
+Theme packs should also define button tokens:
+
+| Token | Usage |
+| --- | --- |
+| `--color-btn-primary` | Primary filled button background |
+| `--color-btn-primary-hover` | Primary filled button hover |
+| `--color-btn-primary-dark` | Primary filled button in dark mode |
+| `--color-btn-primary-dark-hover` | Primary filled button hover in dark mode |
+| `--color-btn-primary-text` | Primary filled button foreground |
 
 ### Background
 
@@ -95,8 +131,9 @@ Dark mode is class-based.
 - Tailwind config: `darkMode: "class"`.
 - Initial state is applied inline in `Layout.astro` before page paint.
 - Preference is stored in `localStorage` under `dark_mode`.
-- Toggle behavior lives in `src/assets/js/main.js`.
-- Dark color overrides live in `html.dark` inside `global.css`.
+- Theme preference is stored in `localStorage` under `theme_id`.
+- Toggle behavior lives in `Header.astro`.
+- Dark color overrides live in `html.dark[data-theme="..."]` inside `global.css`.
 
 ## Motion
 
@@ -135,6 +172,7 @@ data-aos-once="true"
 
 - Use existing components before creating new ones.
 - Use Lucide icons via `@lucide/astro` when an icon is needed.
+- Use semantic theme tokens instead of hardcoded one-off colors.
 - Use `Button.astro` for primary and secondary CTAs.
 - Use `BrowserFrame.astro` for browser or product-preview mockups.
 - Keep cards restrained: subtle borders, low shadow, clean spacing.

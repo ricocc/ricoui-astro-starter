@@ -48,9 +48,9 @@ const currentSizeClasses = sizeClasses[size];
   target={type === "disabled" ? undefined : target}
   class={`${
     type === "solid"
-      ? `flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1.5 ${currentSizeClasses.padding} rounded-xl bg-gradient-to-b from-white to-[#edf1fa] dark:from-[#15233b] dark:to-[#0f1b2d] border-[1px] border-primary/20 dark:border-[#243757] max-w-60 transition duration-400 ease-in-out hover:translate-y-[-2px] hover:shadow-[0px_6px_9px_0_rgba(61,99,171,0.15)] dark:hover:shadow-[0px_6x_9px_0_rgba(59,123,217,0.25)]`
+      ? `flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1.5 ${currentSizeClasses.padding} rounded-xl bg-gradient-to-b from-bg-secondary to-primary-bg dark:from-bg-secondary-dark dark:to-primary-bg-light border-[1px] border-primary/20 dark:border-primary/25 max-w-60 transition duration-400 ease-in-out hover:translate-y-[-2px] hover:shadow-[0px_6px_9px_0_rgba(var(--color-primary-rgb),0.14)] dark:hover:shadow-[0px_6px_9px_0_rgba(var(--color-primary-rgb),0.22)]`
       : type === "fill"
-      ? `flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1.5 ${currentSizeClasses.padding} rounded-xl bg-btn-primary dark:bg-btn-primary-dark border-[0] border-[rgba(138,127,255,0.2)] shadow-[0px_2px_3px_0_rgba(0,0,0,0.1)] max-w-60 transition duration-400 ease-in-out hover:bg-btn-primary-hover dark:hover:bg-btn-primary-dark-hover hover:translate-y-[-2px] hover:shadow-[0px_6px_9px_0_rgba(61,99,171,0.15)]  dark:shadow-[0px_6px_9px_0_rgba(0,0,0,0.2)]`
+      ? `flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1.5 ${currentSizeClasses.padding} rounded-xl bg-btn-primary dark:bg-btn-primary-dark border-[0] border-primary/20 shadow-[0px_2px_3px_0_rgba(0,0,0,0.1)] max-w-60 transition duration-400 ease-in-out hover:bg-btn-primary-hover dark:hover:bg-btn-primary-dark-hover hover:translate-y-[-2px] hover:shadow-[0px_6px_9px_0_rgba(var(--color-primary-rgb),0.16)] dark:shadow-[0px_6px_9px_0_rgba(0,0,0,0.2)]`
       : type === "outline"
       ? `flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1.5 ${currentSizeClasses.padding} rounded-xl bg-transparent border-[1px] border-neutral-300 dark:border-neutral-600 max-w-60 transition duration-400 ease-in-out hover:border-primary hover:text-primary hover:translate-y-[-2px]`
       : type === "disabled"
@@ -70,7 +70,7 @@ const currentSizeClasses = sizeClasses[size];
       <slot />
     </div>
   ) : type === "fill" ? (
-    <span class={`flex gap-1 items-center justify-center ${size === "md" ? "text-sm" : currentSizeClasses.fontSize} font-medium text-center text-neutral-50`}>
+    <span class={`flex gap-1 items-center justify-center ${size === "md" ? "text-sm" : currentSizeClasses.fontSize} font-medium text-center text-btn-primary-text`}>
       <slot />
     </span>
   ) : type === "disabled" ? (

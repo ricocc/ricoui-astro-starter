@@ -102,7 +102,7 @@ const getPageLink = (pageNum: number): string => {
           class:list={[
             "flex items-center justify-center w-10 h-10 rounded-md border transition-colors",
             pageNum === currentPage
-              ? "bg-primary text-white border-primary dark:bg-primary dark:border-primary"
+              ? "bg-primary text-btn-primary-text border-primary dark:bg-primary dark:border-primary"
               : "border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800"
           ]}
           aria-label={`Go to page ${pageNum}`}
