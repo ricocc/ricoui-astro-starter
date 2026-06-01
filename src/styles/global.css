@@ -1,5 +1,5 @@
 /* Import Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 
@@ -11,7 +11,7 @@
 
 /* Define theme font mappings */
 @theme {
-  --font-brand: "Instrument Serif", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-brand: "Noto Sans SC", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans: "Inter", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-body: "Inter", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --max-screen: 1200px;
@@ -178,7 +178,7 @@ html.dark:not([data-theme]) {
 /* Add typography styles */
 @layer components {
   .font-brand{
-    font-weight: 400!important;
+    font-weight: 500!important;
   }
   .prose {
     max-width: 65ch;

@@ -1,39 +1,39 @@
 ---
-title: "Customize the RicoUI theme"
-description: "The quickest path from a fresh clone to your own Astro site."
+title: "自定义 RicoUI 主题"
+description: "从克隆到拥有自己 Astro 网站的最快路径。"
 publishDate: 2026-05-24
 read: 5
-tags: ["Theme", "Guide"]
+tags: ["主题", "指南"]
 img: "/assets/blog/cover.jpg"
-img_alt: "RicoUI theme customization"
+img_alt: "RicoUI 主题自定义"
 ---
 
-Most custom work starts in three places: site config, design tokens, and content.
+大多数自定义工作从三个地方开始：站点配置、设计令牌和内容。
 
-## 1. Change the site config
+## 1. 更改站点配置
 
-Open `src/config/site.js` and update the site title, author, URL, repository, social links, and SEO metadata.
+打开 `src/config/site.js`，更新站点标题、作者、URL、仓库地址、社交链接和 SEO 元数据。
 
-## 2. Change the tokens
+## 2. 更改令牌
 
-Open `src/styles/global.css` for the base Tailwind `@theme` tokens and default theme values. Non-default color theme overrides live in `src/styles/themes.css`.
+打开 `src/styles/global.css` 查看 Tailwind `@theme` 基础令牌和默认主题值。非默认颜色主题覆盖在 `src/styles/themes.css` 中。
 
-The most important values are:
+最重要的值包括：
 
-- Brand colors
-- Background colors
-- Text colors
-- Fonts
-- Container widths
+- 品牌颜色
+- 背景颜色
+- 文字颜色
+- 字体
+- 容器宽度
 
-Change a small set of tokens first, then inspect `/elements` before touching component markup.
+先更改少量令牌，然后查看 `/elements` 再修改组件代码。
 
-## 3. Replace the content
+## 3. 替换内容
 
-Blog posts live in `src/content/post/`. Each post is an MDX file with frontmatter for title, description, date, tags, image, and reading time.
+博客文章存放在 `src/content/post/` 中。每篇文章都是一个 MDX 文件，包含标题、描述、日期、标签、图片和阅读时间的 frontmatter。
 
-The home page is a regular Astro page at `src/pages/index.astro`. Its sections are plain arrays and components, so you can replace the starter copy without learning a CMS first.
+首页是一个常规 Astro 页面，位于 `src/pages/index.astro`。它的各个部分是普通数组和组件，因此你可以直接替换示例文案，无需先学习 CMS。
 
-## 4. Build new pages from Elements
+## 4. 从组件库构建新页面
 
-Use `/elements` as the source for UI patterns. It shows how buttons, badges, cards, form controls, typography, separators, and motion behave in the current theme.
+使用 `/elements` 作为 UI 模式的参考来源。它展示了按钮、徽章、卡片、表单控件、排版、分隔线和动效在当前主题中的表现。

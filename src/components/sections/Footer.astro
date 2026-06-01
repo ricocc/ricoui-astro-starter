@@ -7,15 +7,15 @@ const currentYear = new Date().getFullYear();
 
 const footerLinks = {
 	starter: [
-		{ name: "Home", url: "/" },
-		{ name: "Blog", url: "/blog" },
-		{ name: "DESIGN.md", url: "/design" },
-		{ name: "Elements", url: "/elements" },
+		{ name: "首页", url: "/" },
+		{ name: "博客", url: "/blog" },
+		{ name: "设计文档", url: "/design" },
+		{ name: "组件库", url: "/elements" },
 	],
 	resources: [
 		{ name: "RSS", url: "/rss.xml" },
 		{ name: "GitHub", url: siteConfig.social.github },
-		{ name: "MIT License", url: `${siteConfig.social.github}/blob/main/LICENSE` },
+		{ name: "MIT 许可证", url: `${siteConfig.social.github}/blob/main/LICENSE` },
 	],
 };
 
@@ -30,13 +30,13 @@ const templateVersion = "v1.0.0";
 			<div class="max-w-sm">
 				<Logo />
 				<p class="mt-4 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-					A design-led Astro starter with Blog, DESIGN.md, Elements, Tailwind CSS v4, and a reusable RicoUI theme.
+					一个设计驱动的 Astro 启动模板，包含博客、设计文档、组件库、Tailwind CSS v4 和可复用的 RicoUI 主题。
 				</p>
 			</div>
 
 			<div class="grid grid-cols-2 gap-8 md:gap-12">
 				<div>
-					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">Starter</h4>
+					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">模板</h4>
 					<ul class="space-y-3">
 						{footerLinks.starter.map((link) => (
 							<li>
@@ -49,7 +49,7 @@ const templateVersion = "v1.0.0";
 				</div>
 
 				<div>
-					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">Resources</h4>
+					<h4 class="mb-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">资源</h4>
 					<ul class="space-y-3">
 						{footerLinks.resources.map((link) => (
 							<li>
@@ -69,7 +69,7 @@ const templateVersion = "v1.0.0";
 				<a href={siteConfig.url || " "} target="_blank" class="hover:text-primary dark:hover:text-primary-light">
 					{siteConfig.author || "RicoUI"}
 				</a>.
-				Released under the MIT License.
+				基于 MIT 许可证发布。
 			</p>
 
 			<div class="flex items-center gap-4">
@@ -78,7 +78,7 @@ const templateVersion = "v1.0.0";
 						<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
 						{templateVersion}
 					</span>
-					<span>Astro starter</span>
+					<span>Astro 启动模板</span>
 				</span>
 				<span class="inline-flex justify-center space-x-4">
 					{socialLinks.map((social) => (

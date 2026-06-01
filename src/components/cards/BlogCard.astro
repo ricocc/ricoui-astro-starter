@@ -12,9 +12,9 @@ const {
   link
 } = content;
 
-const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
+const formattedDate = new Date(publishDate).toLocaleDateString('zh-CN', {
   year: 'numeric',
-  month: 'short',
+  month: 'long',
   day: 'numeric'
 });
 
@@ -78,7 +78,7 @@ const isHorizontal = layout === "horizontal";
 
     <!-- Article link -->
     <a class="absolute inset-0 z-10" href={postLink}>
-      <span class="sr-only">Read More About {title}</span>
+      <span class="sr-only">阅读更多关于 {title}</span>
     </a>
   </div>
 

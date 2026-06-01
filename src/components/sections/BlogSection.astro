@@ -6,7 +6,7 @@ import SectionHeader from "@/components/elements/SectionHeader.astro";
 import Button from "@/components/ui/Button.astro";
 // 定义组件接收的属性
 const {
-  title = "Latest Articles",
+  title = "最新文章",
   description = "",
   limit = 3,
   listPage = false,
@@ -121,7 +121,7 @@ const featuredPostWithLink = featuredPost ? {
   {/* "View All Articles" 按钮 - 仅在非列表页且启用时显示 */}
   {!listPage && showViewAllButton && (
     <div class="flex justify-center mt-12 mb-12">
-      <Button url="/blog" className="w-full max-w-60">View All Articles</Button>
+      <Button url="/blog" className="w-full max-w-60">查看全部文章</Button>
     </div>
   )}
 </section>

@@ -50,7 +50,7 @@ const filtered = headings.filter(h => h.depth <= 2);
 							<span class="article-tag letter-spacing-wide text-xs">{tag}</span>
 						))
 					) : (
-						<span class="article-tag text-xs">Article</span>
+						<span class="article-tag text-xs">文章</span>
 					)}
 				</div>
 
@@ -62,7 +62,7 @@ const filtered = headings.filter(h => h.depth <= 2);
 				<!-- Metadata -->
 				<div class="article-meta text-sm text-neutral-500 dark:text-neutral-400">
 					<time datetime={entry.data.publishDate.toISOString()}>
-						{entry.data.publishDate.toLocaleDateString('en-US', {
+						{entry.data.publishDate.toLocaleDateString('zh-CN', {
 							year: 'numeric',
 							month: 'long',
 							day: 'numeric'
@@ -71,7 +71,7 @@ const filtered = headings.filter(h => h.depth <= 2);
 					{entry.data.read && (
 						<>
 							<span class="article-meta-divider"></span>
-							<span>{entry.data.read} min read</span>
+							<span>{entry.data.read} 分钟阅读</span>
 						</>
 					)}
 				</div>

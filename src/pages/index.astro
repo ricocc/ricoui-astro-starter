@@ -24,70 +24,70 @@ import {
 const starterScope = [
 	{
 		icon: Palette,
-		title: "Theme first",
-		desc: "Global tokens define the palette, typography, radii, surfaces, and dark mode before pages start to multiply.",
+		title: "主题优先",
+		desc: "全局令牌定义了调色板、排版、圆角、表面和暗色模式，在页面开始倍增之前就已就绪。",
 	},
 	{
 		icon: FileText,
-		title: "DESIGN.md included",
-		desc: "The design notes are part of the template, so human builders and AI agents can follow the same visual rules.",
+		title: "包含设计文档",
+		desc: "设计说明是模板的一部分，人类构建者和 AI 智能体可以遵循相同的视觉规则。",
 	},
 	{
 		icon: BookOpen,
-		title: "Blog ready",
-		desc: "MDX posts, RSS, pagination, article layout, table of contents, and image handling are already wired.",
+		title: "博客就绪",
+		desc: "MDX 文章、RSS、分页、文章布局、目录和图片处理已经配置完成。",
 	},
 	{
 		icon: Layers,
-		title: "Element theme",
-		desc: "Buttons, badges, cards, typography, motion, form controls, and layout primitives live in one reference page.",
+		title: "组件主题",
+		desc: "按钮、徽章、卡片、排版、动效、表单控件和布局原语集中在一个参考页面中。",
 	},
 ];
 
 const fileMap = [
-	{ path: "src/pages/index.astro", note: "starter home" },
-	{ path: "src/pages/blog", note: "MDX blog routes" },
-	{ path: "src/pages/design.astro", note: "DESIGN.md preview" },
-	{ path: "src/pages/elements.astro", note: "theme components" },
-	{ path: "src/styles/global.css", note: "Tailwind v4 tokens" },
-	{ path: "src/config/site.js", note: "site metadata" },
+	{ path: "src/pages/index.astro", note: "首页" },
+	{ path: "src/pages/blog", note: "MDX 博客路由" },
+	{ path: "src/pages/design.astro", note: "设计文档预览" },
+	{ path: "src/pages/elements.astro", note: "主题组件" },
+	{ path: "src/styles/global.css", note: "Tailwind v4 令牌" },
+	{ path: "src/config/site.js", note: "站点配置" },
 ];
 
 const workflow = [
 	{
 		icon: Settings,
-		title: "Site metadata",
-		desc: "Edit src/config/site.js",
+		title: "站点配置",
+		desc: "编辑 src/config/site.js",
 	},
 	{
 		icon: Palette,
-		title: "Theme tokens",
-		desc: "Tune colors in global.css and themes.css",
+		title: "主题令牌",
+		desc: "在 global.css 和 themes.css 中调整颜色",
 	},
 	{
 		icon: FilePenLine,
-		title: "Content posts",
-		desc: "Write MDX in src/content/post",
+		title: "内容文章",
+		desc: "在 src/content/post 中编写 MDX",
 	},
 	{
 		icon: LayoutTemplate,
-		title: "Page composition",
-		desc: "Build from the Elements reference",
+		title: "页面组合",
+		desc: "从组件库参考页面构建",
 	},
 ];
 ---
 
 <Layout
-	title="RicoUI Astro Starter - Design-led Astro template"
-	description="A clean Astro starter with Blog, DESIGN.md, Elements, Tailwind CSS v4, MDX, and a reusable design theme."
-	keywords="astro starter, design system, tailwind css, mdx blog, website template"
+	title="RicoUI Astro 启动模板 - 设计驱动的 Astro 模板"
+	description="一个简洁的 Astro 启动模板，包含博客、设计文档、组件库、Tailwind CSS v4、MDX 和可复用的设计主题。"
+	keywords="astro 模板, 设计系统, tailwind css, mdx 博客, 网站模板"
 >
 	<HeroSection />
 
 	<section class="site-container py-16 md:py-24">
 		<SectionHeader
-			title="Pure starter surface"
-			description="The template keeps the useful parts visible and removes product-specific demo pages, pricing copy, auth screens, and release-note filler from the public site."
+			title="纯净的启动界面"
+			description="模板保留了有用的部分，移除了产品特定的演示页面、定价文案、认证界面和更新日志填充内容。"
 		/>
 		<div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 			{starterScope.map((item) => (
@@ -110,18 +110,18 @@ const workflow = [
 		<div class="grid items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]">
 			<div>
 				<div class="mb-4 inline-flex items-center gap-2 rounded-md border border-dashed border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
-					<Brush class="h-3.5 w-3.5" /> Theme workflow
+					<Brush class="h-3.5 w-3.5" /> 主题工作流
 				</div>
-				<h2 class="mb-4 max-w-xl text-3xl font-brand md:text-4xl">Build from the design, then fill in the product</h2>
+				<h2 class="mb-4 max-w-xl text-3xl font-brand md:text-4xl">从设计出发，再填充产品</h2>
 				<p class="max-w-2xl text-neutral-600 leading-relaxed dark:text-neutral-300">
-					This starter is intentionally quiet: it gives you a polished visual system, a content layer, and a component reference. Your app, brand, product screenshots, and copy can take over from there.
+					这个启动模板刻意保持简洁：它提供了一套精致的视觉系统、一个内容层和一个组件参考。你的应用、品牌、产品截图和文案可以在此基础上接管。
 				</p>
 				<div class="mt-7 flex flex-wrap gap-3">
 					<Button url="/design" type="fill">
-						View DESIGN.md <ArrowRight size={16} />
+						查看设计文档 <ArrowRight size={16} />
 					</Button>
 					<Button url="/elements">
-						Open Elements
+						浏览组件库
 					</Button>
 				</div>
 			</div>
@@ -146,8 +146,8 @@ const workflow = [
 
 	<section class="site-container py-16 md:py-24">
 		<SectionHeader
-			title="A short path from clone to custom site"
-			description="Most first edits should happen in four places. The rest of the starter stays out of your way."
+			title="从克隆到自定义站点的捷径"
+			description="大多数首次编辑应该发生在四个地方。其余部分不会妨碍你。"
 		/>
 		<div class="mt-8 grid gap-4 md:grid-cols-4">
 			{workflow.map((step, index) => (
@@ -173,8 +173,8 @@ const workflow = [
 
 	<section class="py-16 md:py-24">
 		<BlogSection
-			title="Starter notes"
-			description="Use the Blog as documentation, release writing, essays, or product updates."
+			title="最新文章"
+			description="将博客用于文档、版本说明、随笔或产品更新。"
 			limit={3}
 		/>
 	</section>
@@ -188,13 +188,13 @@ const workflow = [
 					<Sparkles class="h-5 w-5" />
 				</div>
 			</div>
-			<h2 class="mx-auto mb-4 max-w-2xl text-3xl font-brand md:text-4xl">Start with the theme, ship your own thing</h2>
+			<h2 class="mx-auto mb-4 max-w-2xl text-3xl font-brand md:text-4xl">从主题开始，交付你自己的作品</h2>
 			<p class="mx-auto mb-7 max-w-2xl text-neutral-600 dark:text-neutral-300">
-				Clone the starter, keep the design language, and replace the sample writing with your own project structure and content.
+				克隆这个模板，保留设计语言，用自己的项目结构和内容替换示例文案。
 			</p>
 			<div class="flex flex-wrap justify-center gap-3">
 				<Button url={siteConfig.social.github} type="fill" target="_blank">
-					Get Template <ArrowRight size={16} />
+					获取模板 <ArrowRight size={16} />
 				</Button>
 				<Button url="/rss.xml">
 					<Rss size={16} /> RSS

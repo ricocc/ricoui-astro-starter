@@ -17,40 +17,40 @@ const sourceFiles = [
 ];
 
 const tokenRows = [
-	{ token: "--color-primary", usage: "Brand color, links, CTAs, headings" },
-	{ token: "--color-primary-strong", usage: "Hover and emphasis" },
-	{ token: "--color-primary-light", usage: "Soft accents and focus surfaces" },
-	{ token: "--color-accent", usage: "Badges and secondary highlights" },
-	{ token: "--color-bg-primary", usage: "Light page canvas" },
-	{ token: "--color-bg-secondary", usage: "Cards and panels" },
-	{ token: "--color-text-primary", usage: "Headings and emphasized text" },
-	{ token: "--color-text-secondary", usage: "Body text" },
-	{ token: "--color-text-tertiary", usage: "Muted metadata" },
-	{ token: "--color-btn-primary", usage: "Filled button background" },
-	{ token: "--color-btn-primary-hover", usage: "Filled button hover background" },
-	{ token: "--color-btn-primary-text", usage: "Filled button foreground" },
+	{ token: "--color-primary", usage: "品牌色、链接、CTA、标题" },
+	{ token: "--color-primary-strong", usage: "悬停和强调" },
+	{ token: "--color-primary-light", usage: "柔和点缀和聚焦表面" },
+	{ token: "--color-accent", usage: "徽章和次要高亮" },
+	{ token: "--color-bg-primary", usage: "浅色页面画布" },
+	{ token: "--color-bg-secondary", usage: "卡片和面板" },
+	{ token: "--color-text-primary", usage: "标题和强调文字" },
+	{ token: "--color-text-secondary", usage: "正文文字" },
+	{ token: "--color-text-tertiary", usage: "弱化元数据" },
+	{ token: "--color-btn-primary", usage: "填充按钮背景" },
+	{ token: "--color-btn-primary-hover", usage: "填充按钮悬停背景" },
+	{ token: "--color-btn-primary-text", usage: "填充按钮前景" },
 ];
 
 const typeTokens = [
-	{ token: "--font-brand", value: "Instrument Serif", usage: "Display headings and large section titles" },
-	{ token: "--font-sans", value: "Inter", usage: "Body text, navigation, buttons, UI labels" },
-	{ token: "--font-body", value: "Inter", usage: "Long-form content" },
+	{ token: "--font-brand", value: "Noto Sans SC", usage: "展示标题和大号章节标题" },
+	{ token: "--font-sans", value: "Inter", usage: "正文、导航、按钮、UI 标签" },
+	{ token: "--font-body", value: "Inter", usage: "长篇内容" },
 ];
 
 const rules = [
-	"Theme switching changes semantic color tokens only.",
-	"Typography, spacing, radii, layout, and component structure stay stable.",
-	"Use src/config/themes.js as the source of truth for theme options.",
-	"Use localStorage.theme_id, a theme_id cookie fallback, and html[data-theme] for runtime selection.",
-	"Keep light and dark mode styles paired for every theme.",
-	"Keep one DESIGN.md file per theme, with separate Light and Dark token sections inside that file.",
-	"Treat each theme as a color system, not a full component replacement.",
+	"主题切换仅更改语义化颜色令牌。",
+	"排版、间距、圆角、布局和组件结构保持稳定。",
+	"使用 src/config/themes.js 作为主题选项的真实来源。",
+	"使用 localStorage.theme_id、theme_id cookie 回退和 html[data-theme] 进行运行时选择。",
+	"为每个主题保持亮色和暗色模式样式配对。",
+	"每个主题保留一个 DESIGN.md 文件，文件内包含独立的亮色和暗色令牌部分。",
+	"将每个主题视为一个颜色系统，而不是完整的组件替换。",
 ];
 
 const patterns = [
-	{ title: "Marketing sections", desc: "Use .site-container, SectionHeader, responsive grids, and dashed separators." },
-	{ title: "Article pages", desc: "Use the PostLayout, article styles, TOC, reading progress, and MDX content entries." },
-	{ title: "Theme reference", desc: "Use /elements to inspect how the active theme affects real components." },
+	{ title: "营销板块", desc: "使用 .site-container、SectionHeader、响应式网格和虚线分隔符。" },
+	{ title: "文章页面", desc: "使用 PostLayout、文章样式、目录、阅读进度和 MDX 内容条目。" },
+	{ title: "主题参考", desc: "使用 /elements 检查活动主题如何影响实际组件。" },
 ];
 
 const styleFromTokens = (tokens: Record<string, string>) => {
@@ -70,13 +70,13 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 ---
 
 <Layout
-	title="DESIGN.md - RicoUI Astro Starter"
-	description="A web preview of the RicoUI Astro Starter theme system, token map, source files, UI rules, and element guidance."
+	title="设计文档 - RicoUI Astro 启动模板"
+	description="RicoUI Astro 启动模板主题系统的网页预览，包含令牌映射、源文件、UI 规则和组件指南。"
 >
 	<section class="site-container my-12">
 		<PageHeader
-			title="DESIGN.md"
-			description="The starter's design system, theme colors, and implementation rules."
+			title="设计文档"
+			description="启动模板的设计系统、主题颜色和实现规则。"
 		/>
 	</section>
 
@@ -84,27 +84,27 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 		<div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
 			<div class="rounded-xl border border-primary/10 bg-bg-secondary p-6 dark:border-neutral-700 dark:bg-bg-secondary-dark">
 				<div class="mb-4 inline-flex items-center gap-2 rounded-md bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20 dark:text-primary-light">
-					<FileText class="h-3.5 w-3.5" /> Theme system
+					<FileText class="h-3.5 w-3.5" /> 主题系统
 				</div>
 				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">
-					Choose a color direction without changing the whole system
+					选择配色方向，无需更改整个系统
 				</h2>
 				<p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
-					RicoUI now ships with color theme packs. They switch semantic color tokens while preserving the template's typography, spacing, layout, radius, and component behavior.
+					RicoUI 现在附带颜色主题包。它们切换语义化颜色令牌，同时保留模板的排版、间距、布局、圆角和组件行为。
 				</p>
 				<div class="mt-6 flex flex-wrap gap-3">
 					<Button url="/elements" type="fill">
-						View Elements <ArrowRight size={16} />
+						查看组件库 <ArrowRight size={16} />
 					</Button>
 					<Button url="https://github.com/ricocc/ricoui-astro-starter/tree/master/docs/DESIGN" target="_blank">
-						Open raw file
+						查看原始文件
 					</Button>
 				</div>
 			</div>
 
 			<div class="rounded-xl border border-dashed border-primary/20 bg-bg-secondary p-6 dark:border-neutral-700 dark:bg-bg-secondary-dark">
 				<h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-					<Route class="h-4 w-4 text-primary" /> Source files
+					<Route class="h-4 w-4 text-primary" /> 源文件
 				</h3>
 				<div class="grid gap-2">
 					{sourceFiles.map((file) => (
@@ -120,11 +120,11 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 	<section class="site-container py-16 md:py-20">
 		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
 			<div>
-				<Badge variant="accent">Details</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Theme details</h2>
+				<Badge variant="accent">详情</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">主题详情</h2>
 			</div>
 			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-				Each theme keeps the starter structure intact. Expand a theme to see the source mood, color roles, and implementation guidance.
+				每个主题都保持了启动模板的结构完整。展开主题可查看来源氛围、颜色角色和实现指南。
 			</p>
 		</div>
 
@@ -147,14 +147,14 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 							<span class="block text-xs leading-relaxed text-text-tertiary">{theme.source}</span>
 						</span>
 						<span class="flex-none rounded-full border border-primary/15 px-3 py-1 text-xs font-medium text-text-secondary transition-colors group-open:bg-btn-primary group-open:text-btn-primary-text">
-							Details
+							详情
 						</span>
 					</summary>
 					<div class="border-t border-primary/10 px-5 py-5">
 						<p class="max-w-3xl text-sm leading-relaxed text-text-secondary">{theme.details.atmosphere}</p>
 						<div class="mt-5 grid gap-4 lg:grid-cols-3">
 							<div class="rounded-lg bg-bg-primary p-4">
-								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">Best for</p>
+								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">适用场景</p>
 								<div class="flex flex-wrap gap-2">
 									{theme.details.bestFor.map((item) => (
 										<span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-text-primary">{item}</span>
@@ -162,7 +162,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 								</div>
 							</div>
 							<div class="rounded-lg bg-bg-primary p-4 lg:col-span-2">
-								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">Color roles</p>
+								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">颜色角色</p>
 								<div class="grid gap-3 md:grid-cols-3">
 									{theme.details.colorRoles.map((role) => (
 										<div>
@@ -179,7 +179,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 						</div>
 						<div class="mt-4 rounded-lg border border-primary/10 bg-bg-primary p-4">
 							<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
-								<p class="text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">Guidance</p>
+								<p class="text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">指南</p>
 								<span class="font-mono text-[11px] text-text-tertiary">{theme.designDoc}</span>
 							</div>
 							<ul class="grid gap-2 text-sm leading-relaxed text-text-secondary md:grid-cols-3">
@@ -197,11 +197,11 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 	<section class="site-container py-16 md:py-20">
 		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
 			<div>
-				<Badge variant="primary">Themes</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Theme gallery</h2>
+				<Badge variant="primary">主题</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">主题画廊</h2>
 			</div>
 			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-				Use the Header switcher to preview these across the full site. Each card below renders from the same theme configuration.
+				使用顶栏主题切换器在全站预览这些主题。下方每张卡片都渲染自相同的主题配置。
 			</p>
 		</div>
 
@@ -223,7 +223,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 						<p class="mb-5 text-sm leading-relaxed text-text-secondary">{theme.description}</p>
 						<div class="mb-4 grid gap-2">
 							<div>
-								<p class="mb-1 text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400">Light</p>
+								<p class="mb-1 text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400">亮色</p>
 								<div class="flex h-7 overflow-hidden rounded-md border border-white/70 shadow-sm">
 									{theme.lightSwatches.map((color) => (
 										<span class="flex-1" style={`background:${color}`}></span>
@@ -231,7 +231,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 								</div>
 							</div>
 							<div>
-								<p class="mb-1 text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400">Dark</p>
+								<p class="mb-1 text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400">暗色</p>
 								<div class="flex h-7 overflow-hidden rounded-md border border-white/20 shadow-sm">
 									{theme.darkSwatches.map((color) => (
 										<span class="flex-1" style={`background:${color}`}></span>
@@ -240,13 +240,13 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 							</div>
 						</div>
 						<div class="rounded-lg border border-primary/15 bg-bg-primary p-4">
-							<p class="mb-2 text-lg font-brand text-text-primary">Heading sample</p>
+							<p class="mb-2 text-lg font-brand text-text-primary">标题示例</p>
 							<p class="mb-4 text-sm leading-relaxed text-text-secondary">
-								Body copy keeps the same rhythm while the palette changes around it.
+								正文字体保持相同的节奏，而调色板在周围变化。
 							</p>
 							<div class="flex flex-wrap items-center gap-2">
 								<span class="inline-flex rounded-lg bg-btn-primary px-3 py-2 text-xs font-medium text-btn-primary-text">
-									Primary action
+									主要操作
 								</span>
 								<span class="font-mono text-[11px] text-text-tertiary">{theme.designDoc}</span>
 							</div>
@@ -261,11 +261,11 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 	<section class="site-container py-16 md:py-20">
 		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
 			<div>
-				<Badge variant="primary">Tokens</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Semantic color map</h2>
+				<Badge variant="primary">令牌</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">语义化颜色映射</h2>
 			</div>
 			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-				These are the values a developer should adjust when adding another color theme.
+				以下是添加新颜色主题时开发者应调整的值。
 			</p>
 		</div>
 
@@ -275,7 +275,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 					class="grid gap-3 border-b border-dashed border-primary/10 px-4 py-3 text-xs font-medium uppercase tracking-[0.14em] text-neutral-400 dark:border-neutral-700"
 					style={`grid-template-columns: minmax(240px,1.1fr) repeat(${themes.length}, minmax(170px,1fr));`}
 				>
-					<span>Token</span>
+					<span>令牌</span>
 					{themes.map((theme) => <span>{theme.name}</span>)}
 				</div>
 				{tokenRows.map((row) => (
@@ -305,10 +305,10 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 	<section class="site-container py-16 md:py-20">
 		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
 			<div>
-				<Badge variant="accent">Typography</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Type stays consistent</h2>
+				<Badge variant="accent">排版</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">字体保持一致</h2>
 				<p class="mt-4 leading-relaxed text-neutral-600 dark:text-neutral-300">
-					The theme switcher is intentionally color-only. Fonts and spacing remain stable so developers can compare palettes without rebuilding the interface.
+					主题切换器刻意仅用于颜色。字体和间距保持稳定，开发者可以比较调色板而无需重建界面。
 				</p>
 			</div>
 			<div class="grid gap-3">
@@ -333,7 +333,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 	<section class="site-container py-16 md:py-20">
 		<div class="grid gap-8 lg:grid-cols-2">
 			<div>
-				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Theme rules</h2>
+				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">主题规则</h2>
 				<div class="grid gap-3">
 					{rules.map((rule) => (
 						<div
@@ -345,7 +345,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 				</div>
 			</div>
 			<div>
-				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">Page patterns</h2>
+				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">页面模式</h2>
 				<div class="grid gap-4">
 					{patterns.map((pattern) => (
 						<article

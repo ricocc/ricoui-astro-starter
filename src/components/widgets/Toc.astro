@@ -34,21 +34,21 @@ const tree = buildTree(headings);
 <div class="toc-container">
   <div class="toc-header">
     <button id="toc-toggle" aria-expanded="false" aria-controls="toc-content">
-      <span class="font-brand text-lg">TOC</span>
+      <span class="font-brand text-lg">目录</span>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
         <path d="m6 9 6 6 6-6"/>
       </svg>
     </button>
   </div>
   <div class="toc-title">
-    <span class="toc-title-text font-brand text-base">TOC</span>
+    <span class="toc-title-text font-brand text-base">目录</span>
     <button id="toc-toggle-desktop" class="toc-toggle-desktop" aria-expanded="true" aria-controls="toc-content" aria-label="Toggle table of contents">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up">
         <path d="m18 15-6-6-6 6"/>
       </svg>
     </button>
   </div>
-  <nav id="toc-content" class="toc" aria-label="TOC">
+  <nav id="toc-content" class="toc" aria-label="目录">
     <ul>
       {tree.map(node => (
         <li class={`toc-item font-brand depth-${node.depth}`}>
