@@ -1,5 +1,7 @@
 # RicoUI Astro Starter
 
+> [中文文档](README-zh.md) | English
+
 A design-led Astro starter template with a clean public surface: Home, Blog, DESIGN.md, and Elements.
 
 It is built for people who want to start from a finished visual language instead of a blank page. The starter includes switchable color themes, editorial display typography, class-based dark mode, reusable UI primitives, and MDX-powered blog content.
@@ -129,3 +131,39 @@ pnpm preview
 ```
 
 Set `PUBLIC_SITE_URL` in `.env` before deployment so canonical URLs, sitemap, and RSS output use your real domain.
+
+---
+
+## Other Templates
+
+- **SaaS Template** - Open source: [https://github.com/ricocc/ricoui-saas-template](https://github.com/ricocc/ricoui-saas-template)
+
+- **Portfolio Template** - Open source: [https://github.com/ricocc/ricoui-portfolio](https://github.com/ricocc/ricoui-portfolio)
+
+- **Blog Template** - Open source: [https://github.com/ricocc/public-portfolio-site](https://github.com/ricocc/public-portfolio-site)
+
+## About the Author
+
+I'm Rico <a href="https://x.com/ricouii" target="_blank">X (@ricouii)</a>, a web and UI designer who enjoys making interesting and creative work. I have UI/UX design experience and currently focus on web design, visual implementation, and exploring development projects.
+
+You can add me on WeChat and say hi.
+
+<img src="https://ricoui.com/assets/wechat.png" alt="ricocc-wechat" width="280" height="auto" style="display:inline-block;margin:12px;">
+
+I publish updates on <a href="https://ricoui.com/" target="_blank">Rico's Blog</a>. You can also follow me on Xiaohongshu: [@Rico's Design Notes](https://www.xiaohongshu.com/user/profile/5f2b6903000000000101f51f).
+
+---
+
+## Support the Author
+
+If this project is helpful, even a small amount of support is a great encouragement. Thank you!
+
+<img src="https://ricoui.com/assets/wechat-qr.jpg" alt="ricocc-wechat" width="280" height="auto" style="display:inline-block;margin:12px;">
+
+<br/>
+
+<a href="https://ko-fi.com/T6T817U4KZ" target="_blank"><img height="40" src="https://storage.ko-fi.com/cdn/kofi2.png?v=6" alt="Buy Me a Coffee at ko-fi.com" /></a>
+
+---
+
+If this template saved you time, please consider giving it a Star.

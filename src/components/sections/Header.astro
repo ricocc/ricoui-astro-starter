@@ -535,11 +535,14 @@ const activeThemeName = themes.find((theme) => theme.id === defaultThemeId)?.nam
     return allowedThemes.includes(saved) ? saved : defaultThemeId;
   }
 
+  let activeThemeId = getSavedTheme();
+
   function applyTheme(themeId) {
     const nextTheme = allowedThemes.includes(themeId) ? themeId : defaultThemeId;
     const root = document.documentElement;
     const mode = root.classList.contains('dark') ? 'dark' : 'light';
     const tokens = themeTokenMap[nextTheme]?.[mode];
+    activeThemeId = nextTheme;
     root.dataset.theme = nextTheme;
     if (tokens) {
       Object.entries(tokens).forEach(([name, value]) => {
@@ -562,10 +565,10 @@ const activeThemeName = themes.find((theme) => theme.id === defaultThemeId)?.nam
     window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: nextTheme } }));
   }
 
-  applyTheme(getSavedTheme());
+  applyTheme(activeThemeId);
 
   const syncThemeTokensForMode = () => {
-    applyTheme(document.documentElement.dataset.theme || getSavedTheme());
+    applyTheme(activeThemeId);
   };
 
   const themeSwitcher = document.querySelector('.theme-switcher');
