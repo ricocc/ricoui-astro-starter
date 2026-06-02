@@ -5,7 +5,7 @@ import { ArrowLeft, Compass, House, Mail, Search, ShieldAlert } from "@lucide/as
 import { siteConfig } from "@/config/site";
 ---
 
-<PageLayout title="页面未找到 - RicoUI Astro 启动模板" description="您访问的页面不存在。">
+<PageLayout title="页面未找到 - RicoUI Astro 启动模板" description="访问的页面不存在。">
   <section class="site-container py-14 md:py-24">
     <div class="grid min-h-[62vh] items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)]">
       <div>
@@ -19,7 +19,7 @@ import { siteConfig } from "@/config/site";
         </h1>
 
         <p class="mt-5 max-w-xl text-base leading-8 text-neutral-600 dark:text-neutral-300">
-          链接可能已过期、输入有误，或者仍在等待构建。请从已知页面开始，或将失效链接发送给我们以便排查。
+          链接可能已过期、地址有误，或者页面还在构建中。从已知页面重新开始，也可以把失效链接发给我们。
         </p>
 
         <div class="mt-7 flex flex-wrap gap-3">
@@ -27,7 +27,7 @@ import { siteConfig } from "@/config/site";
             <ArrowLeft size={16} /> 返回首页
           </Button>
           <Button url={`mailto:${siteConfig.mail}?subject=Broken%20link%20on%20RicoUI%20Astro%20Starter`}>
-            <Mail size={16} /> 报告链接
+            <Mail size={16} /> 报告问题
           </Button>
         </div>
 

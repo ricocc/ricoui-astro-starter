@@ -25,17 +25,17 @@ const sizeClasses = {
   },
   md: {
     padding: "px-5 py-[12px]",
-    fontSize: "text-base",
+    fontSize: "text-sm",
     borderRadius: "rounded-xl",
   },
   lg: {
     padding: "px-6 py-3.5",
-    fontSize: "text-lg",
+    fontSize: "text-base",
     borderRadius: "rounded-xl",
   },
   xl: {
     padding: "px-8 py-4",
-    fontSize: "text-xl",
+    fontSize: "text-lg",
     borderRadius: "rounded-2xl",
   },
 };
@@ -62,19 +62,19 @@ const currentSizeClasses = sizeClasses[size];
   onclick={type === "disabled" ? "return false;" : undefined}
 >
   {type === "solid" ? (
-    <div class={`flex gap-1 items-center justify-center ${currentSizeClasses.fontSize} font-medium text-center text-neutral-700 dark:text-neutral-300`}>
+    <div class={`flex gap-1 items-center justify-center ${currentSizeClasses.fontSize} font-sm text-center text-neutral-700 dark:text-neutral-300`}>
       <slot />
     </div>
   ) : type === "outline" ? (
-    <div class={`flex gap-1 items-center justify-center ${currentSizeClasses.fontSize} font-medium text-center text-neutral-700 dark:text-neutral-300`}>
+    <div class={`flex gap-1 items-center justify-center ${currentSizeClasses.fontSize} font-sm text-center text-neutral-700 dark:text-neutral-300`}>
       <slot />
     </div>
   ) : type === "fill" ? (
-    <span class={`flex gap-1 items-center justify-center ${size === "md" ? "text-sm" : currentSizeClasses.fontSize} font-medium text-center text-btn-primary-text`}>
+    <span class={`flex gap-1 items-center justify-center ${currentSizeClasses.fontSize} font-sm text-center text-btn-primary-text`}>
       <slot />
     </span>
   ) : type === "disabled" ? (
-    <div class={`flex gap-1 items-center justify-center ${currentSizeClasses.fontSize} font-medium text-center text-neutral-500`}>
+    <div class={`flex gap-1 items-center justify-center ${currentSizeClasses.fontSize} font-sm text-center text-neutral-500`}>
       <slot />
     </div>
   ) : (

@@ -40,7 +40,7 @@ const starterScope = [
 	{
 		icon: Layers,
 		title: "组件主题",
-		desc: "按钮、徽章、卡片、排版、动效、表单控件和布局原语集中在一个参考页面中。",
+		desc: "按钮、徽章、卡片、排版、动效、表单控件和布局集中在一个参考页面中。",
 	},
 ];
 
@@ -79,15 +79,15 @@ const workflow = [
 
 <Layout
 	title="RicoUI Astro 启动模板 - 设计驱动的 Astro 模板"
-	description="一个简洁的 Astro 启动模板，包含博客、设计文档、组件库、Tailwind CSS v4、MDX 和可复用的设计主题。"
+	description="简洁的 Astro 启动模板，自带博客、设计文档、组件库、Tailwind CSS v4、MDX 和可复用的主题系统。"
 	keywords="astro 模板, 设计系统, tailwind css, mdx 博客, 网站模板"
 >
 	<HeroSection />
 
 	<section class="site-container py-16 md:py-24">
 		<SectionHeader
-			title="纯净的启动界面"
-			description="模板保留了有用的部分，移除了产品特定的演示页面、定价文案、认证界面和更新日志填充内容。"
+			title="简洁的启动模板"
+			description="简洁的 Astro 启动模板，自带博客、设计文档、组件库、Tailwind CSS v4、MDX 和可复用的主题系统。"
 		/>
 		<div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 			{starterScope.map((item) => (
@@ -112,9 +112,9 @@ const workflow = [
 				<div class="mb-4 inline-flex items-center gap-2 rounded-md border border-dashed border-primary/25 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
 					<Brush class="h-3.5 w-3.5" /> 主题工作流
 				</div>
-				<h2 class="mb-4 max-w-xl text-3xl font-brand md:text-4xl">从设计出发，再填充产品</h2>
+				<h2 class="mb-4 max-w-xl text-3xl font-brand md:text-4xl">先定设计，再做产品</h2>
 				<p class="max-w-2xl text-neutral-600 leading-relaxed dark:text-neutral-300">
-					这个启动模板刻意保持简洁：它提供了一套精致的视觉系统、一个内容层和一个组件参考。你的应用、品牌、产品截图和文案可以在此基础上接管。
+					模板刻意精简：只给一套完整的视觉系统、一个内容层和一份组件参考。你的应用、品牌、截图和文案直接往上叠就行。
 				</p>
 				<div class="mt-7 flex flex-wrap gap-3">
 					<Button url="/design" type="fill">
@@ -147,7 +147,7 @@ const workflow = [
 	<section class="site-container py-16 md:py-24">
 		<SectionHeader
 			title="从克隆到自定义站点的捷径"
-			description="大多数首次编辑应该发生在四个地方。其余部分不会妨碍你。"
+			description="首次上手只需要改四个地方，其他都不用动。"
 		/>
 		<div class="mt-8 grid gap-4 md:grid-cols-4">
 			{workflow.map((step, index) => (
@@ -174,7 +174,7 @@ const workflow = [
 	<section class="py-16 md:py-24">
 		<BlogSection
 			title="最新文章"
-			description="将博客用于文档、版本说明、随笔或产品更新。"
+			description="博客可用于文档、更新日志、随笔或产品动态。"
 			limit={3}
 		/>
 	</section>
@@ -188,9 +188,9 @@ const workflow = [
 					<Sparkles class="h-5 w-5" />
 				</div>
 			</div>
-			<h2 class="mx-auto mb-4 max-w-2xl text-3xl font-brand md:text-4xl">从主题开始，交付你自己的作品</h2>
+			<h2 class="mx-auto mb-4 max-w-2xl text-3xl font-brand md:text-4xl">从主题出发，做出自己的作品</h2>
 			<p class="mx-auto mb-7 max-w-2xl text-neutral-600 dark:text-neutral-300">
-				克隆这个模板，保留设计语言，用自己的项目结构和内容替换示例文案。
+				克隆模板，保留设计语言，用自己的内容和项目结构替换示例文案。
 			</p>
 			<div class="flex flex-wrap justify-center gap-3">
 				<Button url={siteConfig.social.github} type="fill" target="_blank">

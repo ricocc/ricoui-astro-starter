@@ -112,8 +112,8 @@ Important tokens and rules:
 - Accent color: `--color-accent` = `#fad13b`
 - Light canvas: `--color-bg-primary` = `#fdfaf5`
 - Dark canvas: `--color-bg-primary-dark` = `#0b1220`
-- Display font: `--font-brand` = Instrument Serif
-- UI/body font: `--font-sans` = Inter
+- Display font: `--font-brand` = Noto Sans SC
+- UI/body font: `--font-sans` = Noto Sans SC
 - Main max width: `--max-screen` = `1200px`
 - Inner max width: `--inner-screen` = `800px`
 - Use `.site-container` for regular sections.

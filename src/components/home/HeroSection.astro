@@ -24,19 +24,19 @@ const routes = ["/", "/blog", "/design", "/elements"];
 			</div>
 
 			<h1 class="mb-5 max-w-3xl text-4xl leading-tight md:text-5xl lg:text-6xl font-brand">
-				由真实设计系统塑造的简洁 Astro 启动模板
+				由设计驱动的 Astro 启动模板
 			</h1>
 
 			<p class="mb-7 max-w-2xl text-base md:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
-				使用 RicoUI 视觉主题、设计文档指南和现成的博客基础来构建你自己的网站，无需将演示产品杂务带入项目。
+				用 RicoUI 主题系统、设计文档和现成的博客模块搭出自己的网站，不带任何演示产品的包袱。
 			</p>
 
 			<div class="flex flex-wrap gap-3">
 				<Button url="/design" type="fill">
-					<FileText size={16} /> 查看设计文档
+					<FileText size={16} /> 设计文档
 				</Button>
 				<Button url="/elements">
-					<Layers size={16} /> 浏览组件库
+					<Layers size={16} /> 组件库
 				</Button>
 				<Button url={siteConfig.social.github} type="outline" target="_blank">
 					<GitFork size={16} /> GitHub
@@ -53,8 +53,8 @@ const routes = ["/", "/blog", "/design", "/elements"];
 								<Palette class="h-4 w-4" />
 							</div>
 							<div>
-								<p class="text-sm font-semibold text-neutral-800 dark:text-neutral-100">主题控制台</p>
-								<p class="text-xs text-neutral-400">令牌可读</p>
+								<p class="text-sm font-semibold text-neutral-800 dark:text-neutral-100">主题面板</p>
+								<p class="text-xs text-neutral-400">TOKENS</p>
 							</div>
 						</div>
 						<span class="rounded-md border border-dashed border-primary/25 px-2 py-1 text-[10px] font-medium text-primary">
@@ -79,7 +79,7 @@ const routes = ["/", "/blog", "/design", "/elements"];
 					</div>
 
 					<div class="mt-4 rounded-lg border border-dashed border-primary/15 bg-bg-secondary/60 p-3 dark:border-neutral-700 dark:bg-neutral-900/40">
-						<p class="mb-3 text-[10px] uppercase tracking-[0.16em] text-neutral-400">启动路由</p>
+						<p class="mb-3 text-[10px] uppercase tracking-[0.16em] text-neutral-400">页面路由</p>
 						<div class="grid grid-cols-2 gap-2">
 							{routes.map((route) => (
 								<div class="rounded-md bg-primary/5 px-3 py-2 font-mono text-xs text-primary dark:bg-primary/10 dark:text-primary-light">

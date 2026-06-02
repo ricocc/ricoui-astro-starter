@@ -104,9 +104,9 @@ Fonts are imported in `src/styles/global.css`.
 
 | Token | Font | Usage |
 | --- | --- | --- |
-| `--font-brand` | Instrument Serif | Display headings, hero titles, large section headings |
-| `--font-sans` | Inter | Body text, UI labels, navigation, buttons |
-| `--font-body` | Inter | Body text |
+| `--font-brand` | Noto Sans SC | Display headings, hero titles, large section headings |
+| `--font-sans` | Noto Sans SC | Body text, UI labels, navigation, buttons |
+| `--font-body` | Noto Sans SC | Body text |
 
 Rules:
 

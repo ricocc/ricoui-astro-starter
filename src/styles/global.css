@@ -1,7 +1,5 @@
 /* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 
 @import "tailwindcss";
 
@@ -12,8 +10,8 @@
 /* Define theme font mappings */
 @theme {
   --font-brand: "Noto Sans SC", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-sans: "Inter", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-body: "Inter", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Noto Sans SC", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-body: "Noto Sans SC", ui-sans-serif, system-ui, Noto Sans SC, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --max-screen: 1200px;
   --inner-screen: 800px;
 
@@ -308,7 +306,8 @@ html.dark {
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 div::-webkit-scrollbar {
-  width: 6px !important;
+  width: 8px !important;
+  height: 8px !important;
 }
 
 html::-webkit-scrollbar-track,

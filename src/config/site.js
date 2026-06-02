@@ -13,7 +13,7 @@ export const siteConfig = {
 	meta: {
 		title: "RicoUI Astro 启动模板 - 设计驱动的 Astro 模板",
 		description:
-			"一个简洁的 Astro 启动模板，适用于设计驱动型网站，包含博客、设计文档、组件库、Tailwind CSS v4、MDX 和可复用的主题系统。",
+			"简洁的 Astro 启动模板，适合设计驱动型网站，自带博客、设计文档、组件库、Tailwind CSS v4、MDX 和可复用的主题系统。",
 		keywords:
 			"astro 模板, 设计系统, tailwind css, mdx 博客, 网站主题",
 		image: `${SITE_URL}/og.jpg`,

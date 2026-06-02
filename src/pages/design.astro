@@ -32,9 +32,9 @@ const tokenRows = [
 ];
 
 const typeTokens = [
-	{ token: "--font-brand", value: "Noto Sans SC", usage: "展示标题和大号章节标题" },
-	{ token: "--font-sans", value: "Inter", usage: "正文、导航、按钮、UI 标签" },
-	{ token: "--font-body", value: "Inter", usage: "长篇内容" },
+	{ token: "--font-brand", value: "思源黑体", usage: "展示标题和大号章节标题" },
+	{ token: "--font-sans", value: "思源黑体", usage: "正文、导航、按钮、UI 标签" },
+	{ token: "--font-body", value: "思源黑体", usage: "长篇内容" },
 ];
 
 const rules = [
@@ -76,7 +76,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 	<section class="site-container my-12">
 		<PageHeader
 			title="设计文档"
-			description="启动模板的设计系统、主题颜色和实现规则。"
+			description="模板的设计系统、主题配色和设计原则。"
 		/>
 	</section>
 
@@ -87,17 +87,17 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 					<FileText class="h-3.5 w-3.5" /> 主题系统
 				</div>
 				<h2 class="mb-4 text-3xl font-brand text-neutral-800 dark:text-neutral-100">
-					选择配色方向，无需更改整个系统
+					DESIGN.md 生成主题
 				</h2>
 				<p class="leading-relaxed text-neutral-600 dark:text-neutral-300">
-					RicoUI 现在附带颜色主题包。它们切换语义化颜色令牌，同时保留模板的排版、间距、布局、圆角和组件行为。
+					RicoUI 通过 DESIGN.md 定义了十套精选配色主题。切换主题只改颜色，排版、间距、布局、圆角和组件规范一律不动。
 				</p>
 				<div class="mt-6 flex flex-wrap gap-3">
 					<Button url="/elements" type="fill">
 						查看组件库 <ArrowRight size={16} />
 					</Button>
 					<Button url="https://github.com/ricocc/ricoui-astro-starter/tree/master/docs/DESIGN" target="_blank">
-						查看原始文件
+						查看 DESIGN.md
 					</Button>
 				</div>
 			</div>
@@ -120,11 +120,11 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 	<section class="site-container py-16 md:py-20">
 		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
 			<div>
-				<Badge variant="accent">详情</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">主题详情</h2>
+				<Badge variant="accent">Library</Badge>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">主题列表</h2>
 			</div>
 			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-				每个主题都保持了启动模板的结构完整。展开主题可查看来源氛围、颜色角色和实现指南。
+				每个主题都有完整的配色方案。点击详情可查看简介。
 			</p>
 		</div>
 
@@ -162,7 +162,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 								</div>
 							</div>
 							<div class="rounded-lg bg-bg-primary p-4 lg:col-span-2">
-								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">颜色角色</p>
+								<p class="mb-3 text-xs font-medium uppercase tracking-[0.14em] text-text-tertiary">颜色情绪</p>
 								<div class="grid gap-3 md:grid-cols-3">
 									{theme.details.colorRoles.map((role) => (
 										<div>
@@ -201,7 +201,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">主题画廊</h2>
 			</div>
 			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-				使用顶栏主题切换器在全站预览这些主题。下方每张卡片都渲染自相同的主题配置。
+				用顶栏的主题切换器在全站预览。下方每张卡片渲染自同一份主题配置。
 			</p>
 		</div>
 
@@ -218,7 +218,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 						))}
 					</div>
 					<div class="p-5">
-						<p class="mb-1 text-xs font-medium uppercase tracking-[0.14em] text-neutral-400">{theme.source}</p>
+						<p class="mb-1 text-xs font-sm uppercase tracking-[0.14em] text-neutral-400">{theme.source}</p>
 						<h3 class="mb-2 text-2xl font-brand text-text-primary">{theme.name}</h3>
 						<p class="mb-5 text-sm leading-relaxed text-text-secondary">{theme.description}</p>
 						<div class="mb-4 grid gap-2">
@@ -242,7 +242,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 						<div class="rounded-lg border border-primary/15 bg-bg-primary p-4">
 							<p class="mb-2 text-lg font-brand text-text-primary">标题示例</p>
 							<p class="mb-4 text-sm leading-relaxed text-text-secondary">
-								正文字体保持相同的节奏，而调色板在周围变化。
+								正文字体节奏不变，调色板在周围切换。
 							</p>
 							<div class="flex flex-wrap items-center gap-2">
 								<span class="inline-flex rounded-lg bg-btn-primary px-3 py-2 text-xs font-medium text-btn-primary-text">
@@ -265,7 +265,7 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">语义化颜色映射</h2>
 			</div>
 			<p class="max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
-				以下是添加新颜色主题时开发者应调整的值。
+				添加新主题时需要调整这些值。
 			</p>
 		</div>
 
@@ -306,9 +306,9 @@ const styleFromTokens = (tokens: Record<string, string>) => {
 		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
 			<div>
 				<Badge variant="accent">排版</Badge>
-				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">字体保持一致</h2>
+				<h2 class="mt-3 text-3xl font-brand text-neutral-800 dark:text-neutral-100">字体一致性</h2>
 				<p class="mt-4 leading-relaxed text-neutral-600 dark:text-neutral-300">
-					主题切换器刻意仅用于颜色。字体和间距保持稳定，开发者可以比较调色板而无需重建界面。
+					主题切换器只管颜色。字体和间距保持稳定，方便直接对比配色效果，不用重建界面。
 				</p>
 			</div>
 			<div class="grid gap-3">
