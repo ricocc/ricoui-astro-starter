@@ -1,69 +1,63 @@
 # RicoUI Astro Starter
 
-> [中文文档](README-zh.md) | English
+> [English](README-en.md)  | 中文文档
 
-A design-led Astro starter template with a clean public surface: Home, Blog, DESIGN.md, and Elements.
 
-It is built for people who want to start from a finished visual language instead of a blank page. The starter includes switchable color themes, editorial display typography, class-based dark mode, reusable UI primitives, and MDX-powered blog content.
+一个以设计为驱动的 Astro starter 模板，公开页面保持纯净：Home、Blog、DESIGN.md、Elements。
 
-![preview](/docs/screenshot.jpeg)
+它适合想先拥有一套完整视觉风格，再快速构建自己项目的人。模板保留了 RicoUI 的编辑感标题字体、暗色模式、可复用 UI 组件、MDX Blog 内容系统，并加入了多主题色切换。
 
-![Astro](https://img.shields.io/badge/Astro-6.4.2-FF5D01?logo=astro&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-7.3.3-646CFF?logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.14-38B2AC?logo=tailwind-css&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![preview](/docs/og.jpg)
 
-## What is included
+> **中文版本**：本仓库另有一个 `template-zh` 分支，页面文案和内容已针对中文字体进行了优化。如需中文版本，可切换到该分支：
+>
+> ```bash
+> git checkout template-zh
+> ```
 
-- Home page for the starter theme
-- MDX Blog with list, detail pages, pagination, RSS, and article styling
-- `/design` page that presents the DESIGN.md system as a website page
-- `/elements` page for the website theme: colors, typography, buttons, badges, cards, forms, layout primitives, and icons
-- Header theme switcher with 10 built-in color themes
-- Tailwind CSS v4 base tokens in `src/styles/global.css` and theme overrides in `src/styles/themes.css`
-- Dark mode with localStorage persistence
-- Astro Content Layer setup for posts
-- SEO metadata, sitemap, RSS feed, and custom 404 page
+## 包含内容
 
-## Quick start
+- Starter 首页
+- MDX Blog：列表、详情页、分页、RSS、文章样式
+- `/design`：把 DESIGN.md 和主题系统以网页形式展示
+- `/elements`：展示网站主题，包括颜色、字体、按钮、徽标、卡片、表单、布局、动效和图标
+- Header 主题切换：`Retro Blue`、`Minimal Mono`、`Forest Green`
+- Tailwind CSS v4 主题 token：`src/styles/global.css`
+- 基于 `localStorage` 的主题选择和暗色模式
+- Astro Content Layer 博客配置
+- SEO meta、sitemap、RSS、404 页面
+
+## 快速开始
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-The dev server runs on `http://localhost:5200` by default.
+默认开发地址是 `http://localhost:5200`。
 
-## Edit first
+## 优先修改
 
-| File | Purpose |
+| 文件 | 用途 |
 | --- | --- |
-| `src/config/site.js` | Site title, metadata, author, repository, social links |
-| `src/config/themes.js` | Theme ids, names, swatches, source notes, and semantic token values |
-| `src/styles/global.css` | Tailwind v4 base tokens, default theme, fonts, containers, global styles |
-| `src/styles/themes.css` | Non-default theme variable overrides |
-| `docs/DESIGN.md` | Human-readable design system notes |
-| `src/pages/elements.astro` | Visual reference for the component theme |
-| `src/content/post/` | Blog posts |
+| `src/config/site.js` | 网站标题、meta、作者、仓库、社交链接 |
+| `src/config/themes.js` | 主题 id、名称、色板、来源说明和语义 token |
+| `src/styles/global.css` | 主题 token、字体、颜色、容器、全局样式 |
+| `docs/DESIGN.md` | 设计系统说明 |
+| `src/pages/elements.astro` | 组件和主题展示 |
+| `src/content/post/` | 博客文章 |
 
-## Choose a theme
+## 选择主题开发
 
-Use the Header theme switcher while developing to preview the site in different color directions.
+开发时可以使用 Header 里的主题切换器预览不同色彩方向。
 
-| Theme | ID | Notes |
+| 主题 | ID | 说明 |
 | --- | --- | --- |
 | Retro Blue | `retro-blue` | `docs/DESIGN/retro-blue.md` |
 | Minimal Mono | `minimal-mono` | `docs/DESIGN/minimal-mono.md` |
 | Forest Green | `forest-green` | `docs/DESIGN/forest-green.md` |
-| Claude | `claude` | `docs/DESIGN/claude.md` |
-| Creator Yellow | `creator-yellow` | `docs/DESIGN/creator-yellow.md` |
-| Precision Orange | `precision-orange` | `docs/DESIGN/precision-orange.md` |
-| Comic Pulp | `comic-pulp` | `docs/DESIGN/comic-pulp.md` |
-| Midnight Pastel | `midnight-pastel` | `docs/DESIGN/midnight-pastel.md` |
-| Sky Blue | `sky-blue` | `docs/DESIGN/sky-blue.md` |
-| Rico Red | `rico-red` | `docs/DESIGN/rico-red.md` |
 
-Configure the default theme in `src/config/themes.js`:
+默认主题在 `src/config/themes.js` 里配置：
 
 ```js
 export const themeSettings = {
@@ -75,90 +69,65 @@ export const themeSettings = {
 };
 ```
 
-For a fixed production theme, set `defaultThemeId` to the theme you want, then set `showThemeSwitcher: false` and `persistUserSelection: false`. When persistence is enabled, the active theme is stored in `localStorage.theme_id`, mirrored to a `theme_id` cookie fallback, and applied through `<html data-theme="...">`.
+如果要做成固定主题的生产项目，把 `defaultThemeId` 改成你想要的主题，然后设置 `showThemeSwitcher: false` 和 `persistUserSelection: false`。这样用户不会看到主题切换器，也不会被旧的 `localStorage` 选择覆盖。开启持久化时，当前主题保存在 `localStorage.theme_id`，并同步到 `theme_id` cookie 作为兜底，然后通过 `<html data-theme="...">` 应用到全站。如果要新增主题，先修改 `src/config/themes.js`，再在 `src/styles/global.css` 中补齐对应 CSS 变量覆盖，并为这个主题新增一份 DESIGN.md。
 
-Add or edit themes in `src/config/themes.js`. Keep the default `retro-blue` variables in `src/styles/global.css`, put non-default theme overrides in `src/styles/themes.css`, and create one paired DESIGN.md file per theme with both Light and Dark token sections.
+建议每个主题只建一份 DESIGN.md，在同一个文件里分成 `Light Tokens` 和 `Dark Tokens` 两节。不要把亮色和暗色拆成两个文件，这样后续主题多了以后更容易维护。
 
-## Routes
+## 路由
 
-| Route | Purpose |
+| 路由 | 用途 |
 | --- | --- |
-| `/` | Starter home |
-| `/blog` | Blog list |
-| `/blog/[slug]` | Blog post |
-| `/design` | DESIGN.md website preview |
-| `/elements` | Theme and component reference |
-| `/rss.xml` | Blog RSS feed |
-| `/404` | Not found page |
+| `/` | Starter 首页 |
+| `/blog` | Blog 列表 |
+| `/blog/[slug]` | Blog 文章 |
+| `/design` | DESIGN.md 和主题系统展示 |
+| `/elements` | 主题和组件展示 |
+| `/rss.xml` | Blog RSS |
+| `/404` | 404 页面 |
 
-## Project structure
-
-```txt
-docs/
-  DESIGN/
-    retro-blue.md
-    minimal-mono.md
-    forest-green.md
-    ...
-  DESIGN.md
-public/
-  assets/
-  favicon.png
-  og.jpg
-src/
-  components/
-  config/site.js
-  content/post/
-  layouts/
-  pages/
-    blog/
-    index.astro
-    design.astro
-    elements.astro
-    404.astro
-    rss.xml.js
-  styles/
-    global.css
-    themes.css
-    article.css
-```
-
-## Build
+## 构建
 
 ```bash
 pnpm build
 pnpm preview
 ```
 
-Set `PUBLIC_SITE_URL` in `.env` before deployment so canonical URLs, sitemap, and RSS output use your real domain.
+部署前请在 `.env` 中设置 `PUBLIC_SITE_URL`，这样 canonical URL、sitemap 和 RSS 会使用真实域名。
+
 
 ---
 
-## Other Templates
+## 其他模板
 
-- **SaaS Template** - Open source: [https://github.com/ricocc/ricoui-saas-template](https://github.com/ricocc/ricoui-saas-template)
+-  **SaaS Template** - 开源 :  [https://github.com/ricocc/ricoui-saas-template](https://github.com/ricocc/ricoui-saas-template)
 
-- **Portfolio Template** - Open source: [https://github.com/ricocc/ricoui-portfolio](https://github.com/ricocc/ricoui-portfolio)
+-  **Portfolio Template** - 开源 :  [https://github.com/ricocc/ricoui-portfolio](https://github.com/ricocc/ricoui-portfolio)
 
-- **Blog Template** - Open source: [https://github.com/ricocc/public-portfolio-site](https://github.com/ricocc/public-portfolio-site)
+-  **Blog Template** - 开源 :  [https://github.com/ricocc/public-portfolio-site](https://github.com/ricocc/public-portfolio-site)
 
-## About the Author
 
-I'm Rico <a href="https://x.com/ricouii" target="_blank">X (@ricouii)</a>, a web and UI designer who enjoys making interesting and creative work. I have UI/UX design experience and currently focus on web design, visual implementation, and exploring development projects.
 
-You can add me on WeChat and say hi.
+
+
+## 关于作者
+
+我是Rico <a href="https://x.com/ricouii" target="_blank">X (@ricouii)</a>，网页/UI设计师，热衷于做些有趣和创意的作品。拥有 UI/UX 设计工作经验，目前专注于网页设计和视觉落地，以及开发项目探索。
+
+可以添加我的微信，交个朋友
 
 <img src="https://ricoui.com/assets/wechat.png" alt="ricocc-wechat" width="280" height="auto" style="display:inline-block;margin:12px;">
 
-I publish updates on <a href="https://ricoui.com/" target="_blank">Rico's Blog</a>. You can also follow me on Xiaohongshu: [@Rico's Design Notes](https://www.xiaohongshu.com/user/profile/5f2b6903000000000101f51f).
+
+我平时在博客 <a href="https://ricoui.com/" target="_blank">Rico's Blog</a> 更新内容。也可以关注我的小红书 [@Rico的设计漫想](https://www.xiaohongshu.com/user/profile/5f2b6903000000000101f51f).
 
 ---
 
-## Support the Author
+## 💜 支持作者
 
-If this project is helpful, even a small amount of support is a great encouragement. Thank you!
+如果觉得有所帮助的话，一点点支持就可以大大激励创作者的热情，感谢！
 
 <img src="https://ricoui.com/assets/wechat-qr.jpg" alt="ricocc-wechat" width="280" height="auto" style="display:inline-block;margin:12px;">
+
 
 <br/>
 
@@ -166,4 +135,5 @@ If this project is helpful, even a small amount of support is a great encouragem
 
 ---
 
-If this template saved you time, please consider giving it a Star.
+
+⭐ 如果这个模板帮你节省了时间，请点一个 Star。
