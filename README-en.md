@@ -8,10 +8,17 @@ It is built for people who want to start from a finished visual language instead
 
 ![preview](/public/og.jpg)
 
+## Live Preview
+
+- English: [https://ricoui-astro-starter.vercel.app/](https://ricoui-astro-starter.vercel.app/)
+- Chinese: [https://ricoui-saas-zh.netlify.app/](https://ricoui-saas-zh.netlify.app/)
+
 ![Astro](https://img.shields.io/badge/Astro-6.4.2-FF5D01?logo=astro&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7.3.3-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.14-38B2AC?logo=tailwind-css&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
+![preview](/docs/screenshot-zh.jpg)
 
 > **Chinese version**: A `template-zh` branch with Chinese-translated pages and content is available. To use it:
 >

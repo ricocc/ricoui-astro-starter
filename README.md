@@ -9,6 +9,13 @@
 
 ![preview](/public/og.jpg)
 
+## 在线预览
+
+- 英文版：[https://ricoui-astro-starter.vercel.app/](https://ricoui-astro-starter.vercel.app/)
+- 中文版本：[https://ricoui-saas-zh.netlify.app/](https://ricoui-saas-zh.netlify.app/)
+
+![preview](/docs/screenshot-zh.jpg)
+
 > **中文版本**：本仓库另有一个 `template-zh` 分支，页面文案和内容已针对中文字体进行了优化。如需中文版本，可切换到该分支：
 >
 > ```bash
